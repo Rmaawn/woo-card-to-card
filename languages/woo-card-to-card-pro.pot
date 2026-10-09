@@ -1,0 +1,67 @@
+# Copyright (C) 2026 Arman
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Card to Card Payment for WooCommerce 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-card-to-card-pro\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-26T00:00:00+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.9.0\n"
+"X-Domain: woo-card-to-card-pro\n"
+
+#: woo-card-to-card-pro.php:137
+msgid "پلاگین پرداخت کارت به کارت حرفه‌ای نیاز به نصب و فعال‌سازی ووکامرس دارد."
+msgstr ""
+
+#: woo-card-to-card-pro.php:167
+msgid "کپی شد!"
+msgstr ""
+
+#: woo-card-to-card-pro.php:168
+msgid "در حال ارسال فیش..."
+msgstr ""
+
+#: woo-card-to-card-pro.php:169
+msgid "لطفاً تصویر فیش واریزی را انتخاب کنید."
+msgstr ""
+
+#: woo-card-to-card-pro.php:170
+msgid "فرمت فایل مجاز نیست (فقط JPG, PNG, WEBP)."
+msgstr ""
+
+#: woo-card-to-card-pro.php:171
+msgid "حجم فایل بیشتر از حد مجاز است."
+msgstr ""
+
+#: woo-card-to-card-pro.php:172
+msgid "فیش واریزی شما با موفقیت ثبت شد و در صف بررسی قرار گرفت."
+msgstr ""
+
+#: woo-card-to-card-pro.php:173
+msgid "خطایی در ارسال فیش رخ داد. لطفاً مجدداً تلاش کنید."
+msgstr ""
+
+#: woo-card-to-card-pro.php:217
+msgid "آیا از تایید این فیش و تغییر وضعیت سفارش به «در حال انجام» مطمئن هستید؟"
+msgstr ""
+
+#: woo-card-to-card-pro.php:218
+msgid "علت رد فیش را وارد کنید:"
+msgstr ""
+
+#: woo-card-to-card-pro.php:219
+msgid "فیش واریزی نامعتبر است یا وجه به حساب ننشسته است."
+msgstr ""
+
+#: woo-card-to-card-pro.php:220
+msgid "در حال پردازش..."
+msgstr ""
+
+#: woo-card-to-card-pro.php:221
+msgid "عملیات با موفقیت انجام شد."
+msgstr ""
