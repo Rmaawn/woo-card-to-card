@@ -1,0 +1,40 @@
+# WordPress / WooCommerce Plugin Development
+*.log
+*.sql
+*.sqlite
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.settings/
+.buildpath
+nbproject/
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# Node / Build Tools (if added later)
+node_modules/
+vendor/
+.env
+.env.*
+package-lock.json
+composer.lock
+
+# Distribution
+*.zip
+*.tar.gz
+dist/
+build/

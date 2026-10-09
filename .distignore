@@ -1,0 +1,15 @@
+.git
+.gitignore
+.distignore
+README.md
+node_modules
+vendor
+*.zip
+*.tar.gz
+.DS_Store
+Thumbs.db
+.idea
+.vscode
+tests
+phpunit.xml
+phpcs.xml
