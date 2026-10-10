@@ -10,27 +10,45 @@
 
 ## 📸 پیش‌نمایش و اسکرین‌شات‌ها (Screenshots)
 
-> 💡 **راهنما:** برای نمایش تصاویر، فایل‌های اسکرین‌شات را در پوشه `assets/images/screenshots/` قرار داده و با نام‌های زیر ذخیره کنید:
+> 💡 **راهنما:** برای قرار دادن تصاویر، فایل‌های اسکرین‌شات را در پوشه `assets/images/screenshots/` قرار دهید:
 
-### ۱. صفحه تسویه حساب و کارت بانکی شتاب (Checkout & Card Display)
-<!-- اسکرین‌شات کارت بانکی در صفحه پرداخت را اینجا قرار دهید -->
-![کارت بانکی در برگه پرداخت](assets/images/screenshots/checkout-card-preview.png)
+### 📱 ۱. رابط کاربری مشتری (User Interface / Frontend UI)
 
-### ۲. فرم آپلود فیش و شمارش معکوس پرداخت (Receipt Upload & Countdown)
-<!-- اسکرین‌شات فرم ارسال فیش و تایمر را اینجا قرار دهید -->
-![فرم آپلود فیش در برگه تشکر خرید](assets/images/screenshots/thankyou-upload-form.png)
+#### ۱-۱. صفحه پرداخت و کارت بانکی شتاب (Checkout Card UI)
+<!-- تصویر کارت بانکی شتاب در صفحه تسویه حساب -->
+![کارت بانکی در برگه پرداخت](assets/images/screenshots/user-checkout-card.png)
 
-### ۳. پنل بررسی فیش و بزرگ‌نمایی در مدیریت سفارش (Admin Receipt Review & Lightbox)
-<!-- اسکرین‌شات متاباکس ادمین و لایت‌باکس را اینجا قرار دهید -->
-![بررسی فیش در پنل ادمین](assets/images/screenshots/admin-order-review.png)
+#### ۱-۲. فرم آپلود فیش و تایمر شمارش معکوس در برگه تشکر (Thank You Page & Countdown)
+<!-- تصویر فرم ارسال فیش، درگ اند دراپ و تایمر پرداخت -->
+![فرم آپلود فیش در برگه تشکر خرید](assets/images/screenshots/user-thankyou-upload.png)
 
-### ۴. سیستم هشدار ضد تقلب و فیش جعلی (Anti-Fraud Warning Alert)
-<!-- اسکرین‌شات هشدار تقلب را اینجا قرار دهید -->
-![سیستم تشخیص فیش تکراری](assets/images/screenshots/anti-fraud-alert.png)
+#### ۱-۳. وضعیت سفارش در بخش سفارش‌های من (Customer Order View)
+<!-- تصویر وضعیت فیش در پنل حساب کاربری مشتری -->
+![مشاهده وضعیت سفارش در حساب کاربری](assets/images/screenshots/user-order-view.png)
 
-### ۵. تنظیمات درگاه و تعریف کارت‌های بانکی (Gateway Settings)
-<!-- اسکرین‌شات تنظیمات افزونه در ووکامرس را اینجا قرار دهید -->
-![تنظیمات افزونه در ووکامرس](assets/images/screenshots/gateway-settings.png)
+---
+
+### 🖥️ ۲. پنل مدیریت و پیشخوان ادمین (Admin Panel / Backend)
+
+#### ۲-۱. متاباکس بررسی فیش و اقدامات تایید / رد (Admin Order Review)
+<!-- تصویر متاباکس بررسی فیش و دکمه‌های اقدام سریع -->
+![متاباکس بررسی فیش در صفحه سفارش](assets/images/screenshots/admin-receipt-metabox.png)
+
+#### ۲-۲. لایت‌باکس بزرگ‌نمایی فیش فاکتور (QuickLook Zoom Modal)
+<!-- تصویر پاپ‌آپ بزرگ‌نمایی فیش به سبک macOS -->
+![بزرگ‌نمایی تصویر فیش در پنل ادمین](assets/images/screenshots/admin-lightbox-zoom.png)
+
+#### ۲-۳. سیستم هشدار هوشمند ضد تقلب و فیش تکراری (Anti-Fraud Warning)
+<!-- تصویر هشدار تطابق هش فیش با سفارش‌های قبلی -->
+![هشدار سیستم ضد تقلب در سفارش](assets/images/screenshots/admin-anti-fraud-alert.png)
+
+#### ۲-۴. ستون وضعیت فیش در جدول سفارش‌ها (Orders List Custom Column)
+<!-- تصویر نشان‌ها و ستون اختصاصی فیش در لیست سفارش‌ها -->
+![ستون اختصاصی فیش در لیست سفارش‌های ووکامرس](assets/images/screenshots/admin-orders-list-column.png)
+
+#### ۲-۵. تنظیمات درگاه و تعریف چند کارت بانکی (Gateway Settings)
+<!-- تصویر تنظیمات درگاه در پیکربندی ووکامرس -->
+![تنظیمات افزونه در ووکامرس](assets/images/screenshots/admin-gateway-settings.png)
 
 ---
 
