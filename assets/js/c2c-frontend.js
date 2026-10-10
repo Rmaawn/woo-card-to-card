@@ -179,8 +179,16 @@
                         $progress.width('0%');
                     }
                 },
-                error: function() {
-                    showToast('خطای ارتباط با سرور');
+                error: function(xhr) {
+                    let msg = 'خطای ارتباط با سرور';
+                    if (xhr.responseJSON && xhr.responseJSON.data && xhr.responseJSON.data.message) {
+                        msg = xhr.responseJSON.data.message;
+                    } else if (xhr.responseText) {
+                        if (xhr.responseText === '-1' || xhr.responseText === '0') {
+                            msg = 'نشست امنیتی منقضی شده است. لطفاً صفحه را تازه‌سازی کنید.';
+                        }
+                    }
+                    showToast(msg);
                     $btn.prop('disabled', false).text('ارسال فیش پرداخت');
                     $progress.width('0%');
                 }
