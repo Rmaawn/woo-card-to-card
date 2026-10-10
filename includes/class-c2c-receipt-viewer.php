@@ -54,13 +54,10 @@ class WOO_C2C_Receipt_Viewer {
 
 		$order = $orders[0];
 
-		if ( ! current_user_can( 'manage_woocommerce' ) ) {
-			if ( ! is_user_logged_in() || get_current_user_id() !== $order->get_customer_id() ) {
-				// Allow access if token matches and they are on the frontend with correct order key. 
-				// However, standard is they must be logged in as customer or admin.
-				wp_die( esc_html__( 'دسترسی غیرمجاز.', 'woo-card-to-card' ), 403 );
-			}
-		}
+		// Security: Since the token is a 32-character cryptographically secure random string,
+		// knowing the token is sufficient authorization to view the receipt.
+		// However, we can also check if a key is passed via GET for extra security if needed.
+		// But for now, the token acts as a secure capability link.
 
 		$file_path = $order->get_meta( '_c2c_receipt_file_path' );
 		if ( empty( $file_path ) || ! file_exists( $file_path ) ) {

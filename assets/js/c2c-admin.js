@@ -6,6 +6,12 @@
 
     $(document).ready(function () {
 
+        // Force the metabox to be open
+        const $metabox = $('#woo_c2c_receipt_meta_box');
+        if ($metabox.length && $metabox.hasClass('closed')) {
+            $metabox.removeClass('closed');
+        }
+
         function showAdminToast(msg, type = 'success') {
             $('.c2c-admin-toast').remove();
             const icon = type === 'success' ? 'yes' : 'no-alt';

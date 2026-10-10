@@ -17,6 +17,11 @@ class WOO_C2C_Admin {
 	public static function init() {
 		// Add meta boxes
 		add_action( 'add_meta_boxes', array( __CLASS__, 'register_meta_box' ) );
+		
+		// Ensure metabox is open by default
+		add_filter( 'postbox_classes_shop_order_woo_c2c_receipt_meta_box', function( $classes ) {
+			return array_diff( $classes, array( 'closed' ) );
+		});
 
 		// Custom columns in order list
 		add_filter( 'manage_edit-shop_order_columns', array( __CLASS__, 'add_order_column' ) );
