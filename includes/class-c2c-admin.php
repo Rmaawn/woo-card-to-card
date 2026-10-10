@@ -137,7 +137,7 @@ class WOO_C2C_Admin {
 			__( '💳 بررسی فیش کارت به کارت', 'woo-card-to-card' ),
 			array( __CLASS__, 'render_meta_box_content' ),
 			$screen,
-			'side',
+			'normal',
 			'high'
 		);
 	}

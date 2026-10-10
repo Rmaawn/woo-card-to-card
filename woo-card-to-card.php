@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: woo-card-to-card
+ * Plugin Name: WooCommerce Card to Card Payment Gateway
  * Plugin URI: https://github.com/Rmaawn/woo-card-to-card
  * Description: راه‌حل حرفه‌ای و امن پرداخت کارت به کارت برای ووکامرس با قابلیت مدیریت چند کارت، آپلود فیش، سیستم هوشمند ضد تقلب و فیش جعلی، و پنل بررسی سریع ادمین.
  * Version: 1.0.0

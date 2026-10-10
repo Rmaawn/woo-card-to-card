@@ -6,6 +6,9 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+
+$is_approved = ($receipt_status === 'approved');
+$is_rejected = ($receipt_status === 'rejected');
 ?>
 
 <div class="c2c-admin-metabox-wrapper" id="c2c-admin-box-<?php echo esc_attr($order_id); ?>">
