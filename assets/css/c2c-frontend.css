@@ -1,879 +1,261 @@
-/**
- * WooCommerce Card-to-Card Pro - Apple Design System
- * Realistic Tactile Physical Aesthetic (No AI-slop, No Neon Glitters)
- */
+/* Frontend Stylesheet for woo-card-to-card */
 
-:root {
-    /* Apple Design System Color Palette */
-    --c2c-canvas: #f5f5f7;
-    --c2c-surface: #ffffff;
-    --c2c-surface-translucent: rgba(255, 255, 255, 0.88);
-    --c2c-surface-secondary: #fbfbfd;
-    --c2c-surface-tertiary: #f2f2f7;
-    --c2c-surface-input: #f5f5f7;
-    
-    --c2c-primary: #0071e3;
-    --c2c-primary-hover: #0077ed;
-    --c2c-primary-active: #0062c4;
-    --c2c-primary-tint: rgba(0, 113, 227, 0.08);
-    --c2c-primary-focus-ring: rgba(0, 113, 227, 0.18);
-    
-    --c2c-success: #34c759;
-    --c2c-success-tint: rgba(52, 199, 89, 0.1);
-    --c2c-success-text: #1d7b38;
-    
-    --c2c-warning: #ff9500;
-    --c2c-warning-tint: rgba(255, 149, 0, 0.1);
-    --c2c-warning-text: #b25e00;
-    
-    --c2c-danger: #ff3b30;
-    --c2c-danger-tint: rgba(255, 59, 48, 0.08);
-    --c2c-danger-text: #c92a2a;
-    
-    --c2c-text: #1d1d1f;
-    --c2c-text-secondary: #6e6e73;
-    --c2c-text-tertiary: #86868b;
-    --c2c-text-quaternary: #aeaeb2;
-    
-    --c2c-border: rgba(0, 0, 0, 0.08);
-    --c2c-border-subtle: rgba(0, 0, 0, 0.04);
-    --c2c-border-hover: rgba(0, 0, 0, 0.18);
-    
-    --c2c-font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Vazirmatn", "IRANSansX", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    --c2c-font-mono: "SF Mono", Menlo, Consolas, Monaco, "Courier New", monospace;
-    
-    --c2c-radius-xs: 6px;
-    --c2c-radius-sm: 10px;
-    --c2c-radius-md: 14px;
-    --c2c-radius-lg: 20px;
-    --c2c-radius-xl: 28px;
-    --c2c-radius-pill: 980px;
-    
-    --c2c-shadow-card: 0 12px 36px -8px rgba(0, 0, 0, 0.07), 0 2px 8px -2px rgba(0, 0, 0, 0.04);
-    --c2c-shadow-popup: 0 20px 48px -10px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.05);
-    --c2c-shadow-btn: 0 2px 6px rgba(0, 113, 227, 0.2);
-    
-    --c2c-ease: cubic-bezier(0.16, 1, 0.3, 1);
-    --c2c-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* Dark Mode Adaptation */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --c2c-canvas: #000000;
-        --c2c-surface: #1c1c1e;
-        --c2c-surface-translucent: rgba(28, 28, 30, 0.88);
-        --c2c-surface-secondary: #2c2c2e;
-        --c2c-surface-tertiary: #3a3a3c;
-        --c2c-surface-input: #2c2c2e;
-        
-        --c2c-text: #f5f5f7;
-        --c2c-text-secondary: #a1a1a6;
-        --c2c-text-tertiary: #86868b;
-        --c2c-text-quaternary: #636366;
-        
-        --c2c-border: rgba(255, 255, 255, 0.1);
-        --c2c-border-subtle: rgba(255, 255, 255, 0.05);
-        --c2c-border-hover: rgba(255, 255, 255, 0.2);
-        
-        --c2c-primary-focus-ring: rgba(0, 113, 227, 0.35);
-        --c2c-shadow-card: 0 16px 40px -10px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(255, 255, 255, 0.08);
-    }
-}
-
-/* Reset & Box Sizing */
-.c2c-apple-container,
-.c2c-apple-container * {
-    box-sizing: border-box;
-}
-
-/* Main Container (Apple Sheet / Card Aesthetic) */
-.c2c-apple-container {
-    max-width: 620px;
-    margin: 36px auto;
-    font-family: var(--c2c-font-family);
+.woo-c2c-wrapper {
+    max-width: 600px;
+    margin: 30px auto;
+    font-family: inherit;
     direction: rtl;
     text-align: right;
-    color: var(--c2c-text);
-    background: var(--c2c-surface-translucent);
-    backdrop-filter: blur(25px) saturate(180%);
-    -webkit-backdrop-filter: blur(25px) saturate(180%);
-    border: 1px solid var(--c2c-border);
-    border-radius: var(--c2c-radius-xl);
-    padding: 36px 32px;
-    box-shadow: var(--c2c-shadow-card);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s var(--c2c-ease);
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
 }
 
-@media (max-width: 640px) {
-    .c2c-apple-container {
-        margin: 16px 12px;
-        padding: 24px 18px;
-        border-radius: var(--c2c-radius-lg);
-    }
-}
-
-/* Header */
-.c2c-header {
+.woo-c2c-header {
     text-align: center;
-    margin-bottom: 28px;
-}
-
-.c2c-header-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 14px;
-    background: var(--c2c-surface-tertiary);
-    border: 1px solid var(--c2c-border);
-    border-radius: var(--c2c-radius-pill);
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--c2c-text-secondary);
-    margin-bottom: 14px;
-    letter-spacing: -0.2px;
-}
-
-.c2c-shield-icon {
-    color: var(--c2c-primary);
-    flex-shrink: 0;
-}
-
-.c2c-title {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--c2c-text);
-    margin: 0 0 8px 0;
-    letter-spacing: -0.3px;
-    line-height: 1.35;
-}
-
-.c2c-subtitle {
-    font-size: 13.5px;
-    color: var(--c2c-text-secondary);
-    line-height: 1.6;
-    margin: 0;
-    max-width: 480px;
-    margin-inline: auto;
-}
-
-/* Dynamic Island Style Timer Capsule */
-.c2c-timer-wrapper {
-    display: flex;
-    justify-content: center;
     margin-bottom: 24px;
 }
 
-.c2c-timer-capsule {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--c2c-surface-secondary);
-    border: 1px solid var(--c2c-border);
-    border-radius: var(--c2c-radius-pill);
-    padding: 7px 18px;
-    font-size: 13px;
-    color: var(--c2c-text-secondary);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-    transition: all 0.3s var(--c2c-ease);
+.woo-c2c-title {
+    margin: 0 0 10px;
+    font-size: 20px;
+    color: #1a202c;
 }
 
-.c2c-timer-icon {
-    color: var(--c2c-text-tertiary);
-}
-
-.c2c-timer-label {
-    font-weight: 500;
-}
-
-.c2c-timer-countdown {
-    font-family: var(--c2c-font-mono);
-    font-variant-numeric: tabular-nums;
+.woo-c2c-desc {
+    margin: 0;
+    color: #718096;
     font-size: 14px;
-    font-weight: 600;
-    color: var(--c2c-text);
-    letter-spacing: 0.5px;
 }
 
-.c2c-timer-capsule.urgent {
-    background: var(--c2c-warning-tint);
-    border-color: rgba(255, 149, 0, 0.3);
-    color: var(--c2c-warning-text);
-}
-.c2c-timer-capsule.urgent .c2c-timer-countdown {
-    color: var(--c2c-warning-text);
-}
-
-.c2c-timer-capsule.expired {
-    background: var(--c2c-danger-tint);
-    border-color: rgba(255, 59, 48, 0.3);
-    color: var(--c2c-danger-text);
-}
-
-/* Apple Stepper Progress Bar */
-.c2c-steps {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 28px;
-    padding: 0 8px;
-}
-
-.c2c-step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    flex: 1;
-    z-index: 2;
-}
-
-.c2c-step-dot {
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background: var(--c2c-surface-tertiary);
-    border: 1px solid var(--c2c-border);
+.woo-c2c-timer-box {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--c2c-text-tertiary);
-    transition: all 0.25s var(--c2c-ease);
-}
-
-.c2c-step.active .c2c-step-dot {
-    background: var(--c2c-primary);
-    border-color: var(--c2c-primary);
-    color: #ffffff;
-    box-shadow: 0 2px 8px rgba(0, 113, 227, 0.25);
-}
-
-.c2c-step.completed .c2c-step-dot {
-    background: var(--c2c-success);
-    border-color: var(--c2c-success);
-    color: #ffffff;
-}
-
-.c2c-step-label {
-    font-size: 11.5px;
-    color: var(--c2c-text-tertiary);
-    font-weight: 500;
-    transition: color 0.25s var(--c2c-ease);
-}
-
-.c2c-step.active .c2c-step-label {
-    color: var(--c2c-primary);
-    font-weight: 600;
-}
-
-.c2c-step.completed .c2c-step-label {
-    color: var(--c2c-text);
+    gap: 10px;
+    background: #fffaf0;
+    border: 1px solid #feebc8;
+    color: #c05621;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 24px;
     font-weight: 500;
 }
 
-.c2c-step-line {
-    height: 2px;
-    background: var(--c2c-surface-tertiary);
-    flex: 2;
-    margin-top: -20px;
-    transition: background 0.3s var(--c2c-ease);
+.woo-c2c-countdown {
+    font-family: monospace;
+    font-size: 18px;
+    font-weight: bold;
+    direction: ltr;
 }
 
-.c2c-step-line.active {
-    background: var(--c2c-success);
+.woo-c2c-payment-info {
+    margin-bottom: 24px;
 }
 
-/* Apple Pay Amount Summary Card */
-.c2c-amount-box {
+.woo-c2c-amount-box {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    background: var(--c2c-surface-secondary);
-    border: 1px solid var(--c2c-border);
-    border-radius: var(--c2c-radius-md);
-    padding: 16px 20px;
-    margin-bottom: 28px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    background: #f7fafc;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 16px;
 }
 
-.c2c-amount-info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+.woo-c2c-amount-box strong {
+    color: #2b6cb0;
+    font-size: 18px;
 }
 
-.c2c-amount-label {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--c2c-text-secondary);
-}
-
-.c2c-amount-val {
-    display: flex;
-    align-items: baseline;
-    gap: 4px;
-}
-
-.c2c-amount-highlight {
-    font-size: 21px;
-    font-weight: 700;
-    color: var(--c2c-text);
-    letter-spacing: -0.4px;
-}
-
-.c2c-copy-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--c2c-surface);
-    border: 1px solid var(--c2c-border);
-    color: var(--c2c-text);
-    border-radius: var(--c2c-radius-sm);
-    padding: 8px 14px;
-    font-size: 12.5px;
-    font-weight: 500;
-    cursor: pointer;
-    font-family: inherit;
-    transition: all 0.2s var(--c2c-ease);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-
-.c2c-copy-btn:hover {
-    background: var(--c2c-surface-tertiary);
-    border-color: var(--c2c-border-hover);
-    transform: translateY(-1px);
-}
-
-.c2c-copy-btn:active {
-    transform: scale(0.97);
-}
-
-.c2c-copy-btn.copied {
-    background: var(--c2c-success-tint);
-    border-color: rgba(52, 199, 89, 0.3);
-    color: var(--c2c-success-text);
-}
-
-/* ==========================================================
-   Realistic Bank Card (Apple Titanium / Physical Aesthetic)
-   ========================================================== */
-.c2c-card-scene {
-    perspective: 1200px;
-    margin-bottom: 32px;
-    display: flex;
-    justify-content: center;
-}
-
-.c2c-bank-card {
+/* Realistic Bank Card */
+.woo-c2c-bank-card {
+    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 20px;
     position: relative;
-    width: 100%;
-    max-width: 440px;
-    aspect-ratio: 1.586 / 1;
-    border-radius: var(--c2c-radius-lg);
-    color: #ffffff;
-    
-    /* Physical card layered finish */
-    background: 
-        radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.12) 0%, transparent 60%),
-        radial-gradient(circle at 0% 100%, rgba(0, 0, 0, 0.25) 0%, transparent 70%),
-        linear-gradient(135deg, var(--card-base, #1d1d1f) 0%, #0d0d0f 100%);
-        
-    /* Realistic physical edge chamfer & shadow (simulating physical card thickness) */
-    box-shadow: 
-        inset 0 1px 1.5px rgba(255, 255, 255, 0.38),
-        inset 0 -1px 2px rgba(0, 0, 0, 0.45),
-        0 24px 48px -12px rgba(0, 0, 0, 0.28),
-        0 4px 12px rgba(0, 0, 0, 0.08);
-        
-    transform-style: preserve-3d;
-    transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.4, 1), box-shadow 0.25s ease;
-    will-change: transform;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);
     overflow: hidden;
-    user-select: none;
-    -webkit-user-select: none;
+    margin-bottom: 16px;
 }
 
-/* Fine brushed-metal hairline texture overlay */
-.c2c-bank-card::before {
+.woo-c2c-bank-card::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0.015) 0px,
-        rgba(255, 255, 255, 0.015) 1px,
-        transparent 1px,
-        transparent 3px
-    );
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: radial-gradient(circle at 100% 0%, rgba(255,255,255,0.1) 0%, transparent 50%);
     pointer-events: none;
-    opacity: 0.8;
 }
 
-/* Subtle Dynamic Specular Sheen (Reacts to cursor coordinates) */
-.c2c-card-specular {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-        circle 220px at var(--sheen-x, 50%) var(--sheen-y, 50%),
-        rgba(255, 255, 255, 0.18),
-        transparent 80%
-    );
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    mix-blend-mode: overlay;
-}
-
-.c2c-bank-card:hover .c2c-card-specular {
-    opacity: 1;
-}
-
-.c2c-bank-card:hover {
-    box-shadow: 
-        inset 0 1px 1.5px rgba(255, 255, 255, 0.45),
-        inset 0 -1px 2px rgba(0, 0, 0, 0.45),
-        0 30px 60px -15px rgba(0, 0, 0, 0.36),
-        0 6px 18px rgba(0, 0, 0, 0.12);
-}
-
-.c2c-card-inner {
+.woo-c2c-card-inner {
     position: relative;
-    z-index: 2;
-    height: 100%;
-    padding: 24px 26px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    z-index: 1;
 }
 
-@media (max-width: 480px) {
-    .c2c-card-inner {
-        padding: 18px 20px;
-    }
-}
-
-/* Top bar: Bank Name & Badges */
-.c2c-card-top {
+.woo-c2c-card-top {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    margin-bottom: 30px;
 }
 
-.c2c-bank-brand {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.c2c-bank-name {
+.woo-c2c-bank-logo-text {
+    font-weight: bold;
     font-size: 16px;
-    font-weight: 700;
-    letter-spacing: -0.2px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
-.c2c-card-badges {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.c2c-contactless {
-    opacity: 0.85;
-    display: flex;
-    align-items: center;
-}
-
-.c2c-shetab-pill {
-    background: rgba(255, 255, 255, 0.14);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    border-radius: var(--c2c-radius-pill);
-    padding: 3px 10px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-}
-
-/* Micro EMV Chip */
-.c2c-chip-wrapper {
-    margin: 8px 0 14px 0;
-}
-
-.c2c-chip {
-    width: 48px;
-    height: 36px;
-    border-radius: 6px;
-    display: inline-block;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+.woo-c2c-chip {
+    width: 40px;
+    height: 30px;
+    background: linear-gradient(135deg, #f6e05e 0%, #d69e2e 100%);
+    border-radius: 4px;
+    position: relative;
     overflow: hidden;
+    box-shadow: inset 0 0 2px rgba(0,0,0,0.2);
 }
 
-.c2c-chip-svg {
-    display: block;
-    width: 100%;
-    height: 100%;
+.woo-c2c-chip-line {
+    position: absolute;
+    background: rgba(0,0,0,0.2);
 }
+.woo-c2c-chip-line:nth-child(1) { top: 33%; left: 0; width: 100%; height: 1px; }
+.woo-c2c-chip-line:nth-child(2) { top: 66%; left: 0; width: 100%; height: 1px; }
+.woo-c2c-chip-line:nth-child(3) { top: 0; left: 33%; width: 1px; height: 100%; }
 
-/* Card Number Row */
-.c2c-card-number-wrapper {
+.woo-c2c-card-number-box {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
-    direction: ltr;
-    margin-bottom: 12px;
-}
-
-.c2c-card-number {
-    display: flex;
-    gap: 12px;
-    font-family: var(--c2c-font-mono);
-    font-size: 21px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    font-variant-numeric: tabular-nums;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-@media (max-width: 440px) {
-    .c2c-card-number {
-        font-size: 17px;
-        gap: 8px;
-        letter-spacing: 1px;
-    }
-}
-
-.c2c-copy-card-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    background: rgba(255, 255, 255, 0.16);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    color: #ffffff;
-    border-radius: var(--c2c-radius-pill);
-    padding: 5px 10px;
-    font-size: 11px;
-    font-weight: 500;
-    cursor: pointer;
-    font-family: inherit;
-    transition: all 0.2s var(--c2c-ease);
-}
-
-.c2c-copy-card-btn:hover {
-    background: rgba(255, 255, 255, 0.28);
-    transform: translateY(-1px);
-}
-
-.c2c-copy-card-btn:active {
-    transform: scale(0.95);
-}
-
-.c2c-copy-card-btn.copied {
-    background: var(--c2c-success);
-    border-color: var(--c2c-success);
-}
-
-/* Card Bottom Info */
-.c2c-card-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 12px;
-}
-
-.c2c-card-label {
-    display: block;
-    font-size: 10px;
-    font-weight: 500;
-    opacity: 0.72;
-    margin-bottom: 2px;
-    letter-spacing: 0.2px;
-    text-transform: uppercase;
-}
-
-.c2c-card-val {
-    font-size: 13.5px;
-    font-weight: 600;
-    letter-spacing: 0.2px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-}
-
-.c2c-shaba-info {
-    text-align: left;
-}
-
-.c2c-shaba-row {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.c2c-shaba-val {
-    font-family: var(--c2c-font-mono);
-    font-size: 11.5px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-}
-
-.c2c-copy-shaba-btn {
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #ffffff;
-    border-radius: var(--c2c-radius-xs);
-    width: 24px;
-    height: 24px;
-    padding: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s var(--c2c-ease);
-}
-
-.c2c-copy-shaba-btn:hover {
-    background: rgba(255, 255, 255, 0.25);
-}
-
-.c2c-copy-shaba-btn.copied {
-    background: var(--c2c-success);
-    border-color: var(--c2c-success);
-}
-
-/* ==========================================================
-   Receipt Section & Apple iOS Status Cards
-   ========================================================== */
-.c2c-status-card {
-    background: var(--c2c-surface-secondary);
-    border: 1px solid var(--c2c-border);
-    border-radius: var(--c2c-radius-lg);
-    padding: 24px;
-    margin-bottom: 24px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
-}
-
-.c2c-status-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
     margin-bottom: 20px;
 }
 
-.c2c-status-icon-wrapper {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
+.woo-c2c-card-number {
+    display: flex;
+    gap: 12px;
+    font-size: 22px;
+    font-family: "Courier New", Courier, monospace;
+    letter-spacing: 2px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.woo-c2c-copy-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
+    transition: background 0.2s;
 }
 
-.c2c-status-approved .c2c-status-icon-wrapper {
-    background: var(--c2c-success-tint);
-    color: var(--c2c-success);
+.woo-c2c-copy-btn:hover {
+    background: rgba(255,255,255,0.3);
 }
 
-.c2c-status-rejected .c2c-status-icon-wrapper {
-    background: var(--c2c-danger-tint);
-    color: var(--c2c-danger);
-}
-
-.c2c-status-pending .c2c-status-icon-wrapper {
-    background: var(--c2c-primary-tint);
-    color: var(--c2c-primary);
-}
-
-.c2c-status-icon {
-    width: 22px;
-    height: 22px;
-}
-
-.c2c-status-title {
-    display: block;
-    font-size: 15.5px;
-    font-weight: 700;
-    margin-bottom: 3px;
-}
-
-.c2c-status-desc {
-    margin: 0;
-    font-size: 13px;
-    color: var(--c2c-text-secondary);
-}
-
-.c2c-text-success { color: var(--c2c-success); }
-.c2c-text-danger  { color: var(--c2c-danger); }
-.c2c-text-primary { color: var(--c2c-primary); }
-
-/* Inset Details View (iOS Settings Grouped Style) */
-.c2c-receipt-preview-inline {
-    display: flex;
-    gap: 18px;
-    background: var(--c2c-surface);
-    border: 1px solid var(--c2c-border);
-    border-radius: var(--c2c-radius-md);
-    padding: 16px;
-    align-items: center;
-}
-
-.c2c-receipt-thumb-link {
-    width: 84px;
-    height: 84px;
-    border-radius: var(--c2c-radius-sm);
-    overflow: hidden;
-    position: relative;
-    flex-shrink: 0;
-    border: 1px solid var(--c2c-border);
-    background: #000000;
-}
-
-.c2c-receipt-thumb {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.25s var(--c2c-ease);
-}
-
-.c2c-thumb-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    color: #ffffff;
-    transition: opacity 0.2s var(--c2c-ease);
-    backdrop-filter: blur(2px);
-}
-
-.c2c-receipt-thumb-link:hover .c2c-thumb-overlay {
-    opacity: 1;
-}
-
-.c2c-receipt-thumb-link:hover .c2c-receipt-thumb {
-    transform: scale(1.08);
-}
-
-.c2c-receipt-meta-summary {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.c2c-meta-row {
+.woo-c2c-card-bottom {
     display: flex;
     justify-content: space-between;
-    font-size: 12.5px;
-    padding-bottom: 6px;
-    border-bottom: 1px solid var(--c2c-border-subtle);
 }
 
-.c2c-meta-row:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
+.woo-c2c-card-owner small {
+    display: block;
+    font-size: 10px;
+    opacity: 0.8;
+    margin-bottom: 4px;
 }
 
-.c2c-meta-label {
-    color: var(--c2c-text-secondary);
+.woo-c2c-card-owner span {
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
 }
 
-.c2c-meta-value {
-    font-weight: 600;
-    color: var(--c2c-text);
-    font-family: var(--c2c-font-mono);
+.woo-c2c-shaba-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f7fafc;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 14px;
 }
 
-.c2c-action-row {
-    margin-top: 18px;
-    text-align: center;
+.woo-c2c-shaba-val {
+    font-family: monospace;
+    font-size: 15px;
 }
 
-.c2c-btn-secondary {
-    background: var(--c2c-surface);
-    border: 1px solid var(--c2c-border);
-    color: var(--c2c-primary);
-    padding: 10px 22px;
-    border-radius: var(--c2c-radius-pill);
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    font-family: inherit;
-    transition: all 0.2s var(--c2c-ease);
+/* Status Alert */
+.woo-c2c-status-alert {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 6px;
+    margin-bottom: 24px;
 }
 
-.c2c-btn-secondary:hover {
-    background: var(--c2c-primary-tint);
-    border-color: rgba(0, 113, 227, 0.3);
+.woo-c2c-status-approved { background: #f0fff4; border: 1px solid #c6f6d5; color: #22543d; }
+.woo-c2c-status-rejected { background: #fff5f5; border: 1px solid #fed7d7; color: #742a2a; }
+.woo-c2c-status-pending { background: #ebf8ff; border: 1px solid #bee3f8; color: #2a4365; }
+
+.woo-c2c-status-body strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 15px;
 }
 
-/* ==========================================================
-   Receipt Upload Form & AirDrop Dropzone
-   ========================================================== */
-.c2c-upload-form {
-    background: transparent;
-}
-
-.c2c-form-header {
-    margin-bottom: 18px;
-    position: relative;
-}
-
-.c2c-form-header h4 {
-    margin: 0 0 6px 0;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--c2c-text);
-}
-
-.c2c-form-header p {
+.woo-c2c-status-body p {
     margin: 0;
     font-size: 13px;
-    color: var(--c2c-text-secondary);
 }
 
-.c2c-attempts-badge {
-    position: absolute;
-    left: 0;
-    top: 0;
-    background: var(--c2c-surface-tertiary);
-    border: 1px solid var(--c2c-border);
-    color: var(--c2c-text-secondary);
-    padding: 4px 10px;
-    border-radius: var(--c2c-radius-pill);
-    font-size: 11px;
-    font-weight: 500;
+.woo-c2c-btn-secondary {
+    margin-top: 10px;
+    padding: 6px 12px;
+    background: #fff;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
 }
 
-/* AirDrop Dropzone */
-.c2c-dropzone {
-    border: 1.5px dashed var(--c2c-border-hover);
-    border-radius: var(--c2c-radius-lg);
-    background: var(--c2c-surface-secondary);
-    padding: 32px 20px;
+.woo-c2c-receipt-preview {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.woo-c2c-receipt-preview img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+/* Upload Form */
+.woo-c2c-file-area {
+    border: 2px dashed #cbd5e0;
+    border-radius: 8px;
+    padding: 30px 20px;
     text-align: center;
     position: relative;
-    cursor: pointer;
-    margin-bottom: 22px;
-    transition: all 0.25s var(--c2c-ease);
+    background: #f7fafc;
+    transition: all 0.2s;
+    margin-bottom: 20px;
 }
 
-.c2c-dropzone:hover,
-.c2c-dropzone.dragover {
-    border-color: var(--c2c-primary);
-    background: var(--c2c-primary-tint);
+.woo-c2c-file-area.dragover {
+    border-color: #3182ce;
+    background: #ebf8ff;
 }
 
-.c2c-file-input {
+.woo-c2c-file-area input[type="file"] {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -883,425 +265,135 @@
     z-index: 10;
 }
 
-.c2c-upload-icon-wrapper {
-    width: 54px;
-    height: 54px;
-    border-radius: 50%;
-    background: var(--c2c-surface);
-    border: 1px solid var(--c2c-border);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 12px;
-    color: var(--c2c-primary);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-    transition: transform 0.25s var(--c2c-ease);
+.woo-c2c-file-prompt {
+    color: #4a5568;
 }
 
-.c2c-dropzone:hover .c2c-upload-icon-wrapper {
-    transform: translateY(-2px);
+.woo-c2c-file-prompt svg {
+    margin-bottom: 10px;
+    color: #a0aec0;
 }
 
-.c2c-dropzone-text strong {
-    display: block;
+.woo-c2c-file-prompt p {
+    margin: 0;
     font-size: 14px;
-    font-weight: 600;
-    color: var(--c2c-text);
-    margin-bottom: 4px;
+    line-height: 1.5;
 }
 
-.c2c-dropzone-text span {
-    font-size: 12px;
-    color: var(--c2c-text-tertiary);
-}
-
-/* Apple Files Selected Preview */
-.c2c-file-preview-box {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    text-align: right;
+.woo-c2c-file-preview-box {
     position: relative;
-    z-index: 11;
+    display: inline-block;
+    z-index: 20;
 }
 
-.c2c-preview-image-wrapper {
-    position: relative;
-    width: 68px;
-    height: 68px;
-    border-radius: var(--c2c-radius-sm);
-    overflow: hidden;
-    border: 1px solid var(--c2c-border);
-    flex-shrink: 0;
-    background: #000;
+.woo-c2c-file-preview-box img {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.c2c-preview-image-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.c2c-upload-progress {
+#woo-c2c-remove-file {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: rgba(0,0,0,0.3);
-}
-
-.c2c-progress-bar {
-    height: 100%;
-    width: 0%;
-    background: var(--c2c-primary);
-    transition: width 0.3s;
-}
-
-.c2c-preview-details {
-    flex: 1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.c2c-filename {
-    display: block;
-    font-weight: 600;
-    font-size: 13.5px;
-    color: var(--c2c-text);
-    margin-bottom: 4px;
-    word-break: break-all;
-}
-
-.c2c-filesize {
-    font-size: 11.5px;
-    color: var(--c2c-text-tertiary);
-}
-
-.c2c-btn-remove {
-    background: var(--c2c-surface-tertiary);
-    color: var(--c2c-text-secondary);
-    border: 1px solid var(--c2c-border);
-    width: 32px;
-    height: 32px;
+    top: -10px;
+    right: -10px;
+    background: #e53e3e;
+    color: #fff;
+    border: none;
     border-radius: 50%;
+    width: 24px;
+    height: 24px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s var(--c2c-ease);
-    z-index: 12;
+    font-size: 16px;
+    line-height: 1;
 }
 
-.c2c-btn-remove:hover {
-    background: var(--c2c-danger-tint);
-    border-color: rgba(255, 59, 48, 0.3);
-    color: var(--c2c-danger);
+.woo-c2c-progress {
+    height: 4px;
+    background: #3182ce;
+    width: 0%;
+    transition: width 0.3s;
+    border-radius: 2px;
+    margin-top: 10px;
 }
 
-/* Inset Apple Grouped Inputs */
-.c2c-fields-grid {
+.woo-c2c-fields-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
     margin-bottom: 24px;
 }
 
-@media (max-width: 520px) {
-    .c2c-fields-grid {
+@media (max-width: 600px) {
+    .woo-c2c-fields-row {
         grid-template-columns: 1fr;
-        gap: 14px;
+    }
+    .woo-c2c-card-number {
+        font-size: 18px;
     }
 }
 
-.c2c-field-group label {
+.woo-c2c-form-group label {
     display: block;
-    font-size: 12.5px;
-    font-weight: 500;
-    color: var(--c2c-text-secondary);
     margin-bottom: 6px;
+    font-size: 13px;
+    color: #4a5568;
+    font-weight: 500;
 }
 
-.c2c-required {
-    color: var(--c2c-danger);
-    margin-right: 2px;
-}
-
-.c2c-input-wrapper {
-    position: relative;
-}
-
-.c2c-input {
+.woo-c2c-form-group input {
     width: 100%;
-    padding: 12px 14px;
-    background: var(--c2c-surface-input);
-    border: 1px solid var(--c2c-border);
-    border-radius: var(--c2c-radius-sm);
-    color: var(--c2c-text);
+    padding: 10px;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
     font-size: 14px;
-    font-family: inherit;
-    outline: none;
-    transition: all 0.2s var(--c2c-ease);
+    box-sizing: border-box;
 }
 
-.c2c-input-digits {
-    font-family: var(--c2c-font-mono);
-    letter-spacing: 2px;
-    font-size: 15px;
-}
-
-.c2c-input:hover {
-    border-color: var(--c2c-border-hover);
-}
-
-.c2c-input:focus {
-    background: var(--c2c-surface);
-    border-color: var(--c2c-primary);
-    box-shadow: 0 0 0 3.5px var(--c2c-primary-focus-ring);
-}
-
-/* Apple Primary Action Button */
-.c2c-btn-primary {
+.woo-c2c-btn-primary {
     width: 100%;
-    background: var(--c2c-primary);
-    color: #ffffff;
+    padding: 14px;
+    background: #3182ce;
+    color: #fff;
     border: none;
-    border-radius: var(--c2c-radius-md);
-    padding: 14px 20px;
-    font-size: 15px;
+    border-radius: 6px;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-family: inherit;
-    transition: all 0.2s var(--c2c-ease);
-    box-shadow: var(--c2c-shadow-btn);
+    transition: background 0.2s;
 }
 
-.c2c-btn-primary:hover {
-    background: var(--c2c-primary-hover);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+.woo-c2c-btn-primary:hover {
+    background: #2b6cb0;
 }
 
-.c2c-btn-primary:active {
-    background: var(--c2c-primary-active);
-    transform: scale(0.985);
-}
-
-.c2c-btn-primary:disabled {
-    opacity: 0.55;
+.woo-c2c-btn-primary:disabled {
+    background: #a0aec0;
     cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
 }
 
-.c2c-btn-arrow {
-    transition: transform 0.2s var(--c2c-ease);
-}
-
-.c2c-btn-primary:hover .c2c-btn-arrow {
-    transform: translateX(-3px);
-}
-
-/* Apple Spinner (8-Segment Activity Indicator) */
-.c2c-spinner {
-    width: 18px;
-    height: 18px;
-    border: 2px solid rgba(255, 255, 255, 0.35);
-    border-top-color: #ffffff;
-    border-radius: 50%;
-    animation: c2c-spin 0.75s linear infinite;
-}
-
-@keyframes c2c-spin {
-    to { transform: rotate(360deg); }
-}
-
-/* ==========================================================
-   Dynamic Island Floating Toast (iOS Style)
-   ========================================================== */
-.c2c-toast-container {
+/* Toast Notification */
+.woo-c2c-toast {
     position: fixed;
-    top: 24px;
+    bottom: 20px;
     left: 50%;
-    transform: translateX(-50%);
-    z-index: 999999;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    pointer-events: none;
-}
-
-.c2c-toast {
-    pointer-events: auto;
-    background: rgba(28, 28, 30, 0.94);
-    color: #ffffff;
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: var(--c2c-radius-pill);
-    padding: 10px 20px;
-    font-family: var(--c2c-font-family);
-    font-size: 13.5px;
-    font-weight: 500;
-    direction: rtl;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+    transform: translateX(-50%) translateY(20px);
+    background: #2d3748;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 14px;
     opacity: 0;
-    transform: translateY(-20px) scale(0.92);
-    transition: all 0.35s var(--c2c-spring);
+    transition: all 0.3s;
+    pointer-events: none;
+    z-index: 9999;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.c2c-toast.show {
+.woo-c2c-toast.show {
     opacity: 1;
-    transform: translateY(0) scale(1);
-}
-
-.c2c-toast svg {
-    flex-shrink: 0;
-}
-
-.c2c-toast.success svg {
-    color: var(--c2c-success);
-}
-
-.c2c-toast.error svg {
-    color: var(--c2c-danger);
-}
-
-.c2c-hidden {
-    display: none !important;
-}
-
-
-/* ==========================================================
-   Bespoke Iranian Bank Tactile Finishes (Apple HIG Inspired)
-   ========================================================== */
-
-/* 1. Blu Bank (Saman) - Iconic Minimalist Matte Cobalt Finish */
-.c2c-bank-card.c2c-card-theme-blu {
-    background: 
-        radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.16) 0%, transparent 50%),
-        radial-gradient(circle at 10% 90%, rgba(0, 0, 0, 0.28) 0%, transparent 60%),
-        linear-gradient(135deg, #1868f0 0%, #0d46b8 100%);
-    box-shadow: 
-        inset 0 1px 1.5px rgba(255, 255, 255, 0.45),
-        inset 0 -1px 2px rgba(0, 0, 0, 0.35),
-        0 24px 48px -12px rgba(16, 100, 234, 0.32),
-        0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-/* 2. Bank Pasargad - Matte Obsidian with Champagne Gold Refinement */
-.c2c-bank-card.c2c-card-theme-pasargad {
-    background: 
-        radial-gradient(circle at 90% 10%, rgba(212, 175, 55, 0.18) 0%, transparent 55%),
-        radial-gradient(circle at 10% 90%, rgba(0, 0, 0, 0.35) 0%, transparent 60%),
-        linear-gradient(135deg, #262420 0%, #121110 100%);
-    border: 1px solid rgba(212, 175, 55, 0.25);
-    box-shadow: 
-        inset 0 1px 1.5px rgba(245, 224, 150, 0.4),
-        inset 0 -1px 2px rgba(0, 0, 0, 0.5),
-        0 24px 48px -12px rgba(0, 0, 0, 0.4),
-        0 4px 12px rgba(212, 175, 55, 0.1);
-}
-.c2c-card-theme-pasargad .c2c-card-chunk {
-    color: #f7e7b4;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
-}
-
-/* 3. Bank Mellat - Deep Matte Crimson / Ruby */
-.c2c-bank-card.c2c-card-theme-mellat {
-    background: 
-        radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.14) 0%, transparent 50%),
-        radial-gradient(circle at 10% 90%, rgba(0, 0, 0, 0.4) 0%, transparent 60%),
-        linear-gradient(135deg, #990026 0%, #4a0013 100%);
-    box-shadow: 
-        inset 0 1px 1.5px rgba(255, 255, 255, 0.35),
-        inset 0 -1px 2px rgba(0, 0, 0, 0.45),
-        0 24px 48px -12px rgba(153, 0, 38, 0.3),
-        0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* 4. Bank Melli Iran - Deep Executive Navy / Sapphire */
-.c2c-bank-card.c2c-card-theme-melli {
-    background: 
-        radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.14) 0%, transparent 50%),
-        radial-gradient(circle at 10% 90%, rgba(0, 0, 0, 0.35) 0%, transparent 60%),
-        linear-gradient(135deg, #16367c 0%, #091a42 100%);
-    box-shadow: 
-        inset 0 1px 1.5px rgba(255, 255, 255, 0.35),
-        inset 0 -1px 2px rgba(0, 0, 0, 0.45),
-        0 24px 48px -12px rgba(22, 54, 124, 0.3),
-        0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* 5. Bank Saman - Ocean Blue Slate */
-.c2c-bank-card.c2c-card-theme-saman {
-    background: 
-        radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.14) 0%, transparent 50%),
-        radial-gradient(circle at 10% 90%, rgba(0, 0, 0, 0.35) 0%, transparent 60%),
-        linear-gradient(135deg, #0b5b93 0%, #052c48 100%);
-}
-
-/* 6. Bank Parsian - Deep Wine / Burgundy */
-.c2c-bank-card.c2c-card-theme-parsian {
-    background: 
-        radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.12) 0%, transparent 50%),
-        radial-gradient(circle at 10% 90%, rgba(0, 0, 0, 0.4) 0%, transparent 60%),
-        linear-gradient(135deg, #6b0c20 0%, #30040d 100%);
-}
-
-/* 7. Bank Keshavarzi - Forest Emerald */
-.c2c-bank-card.c2c-card-theme-keshavarzi {
-    background: 
-        radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.14) 0%, transparent 50%),
-        radial-gradient(circle at 10% 90%, rgba(0, 0, 0, 0.35) 0%, transparent 60%),
-        linear-gradient(135deg, #246829 0%, #0f3612 100%);
-}
-
-/* ==========================================================
-   WooCommerce Checkout Screen Refinement
-   ========================================================== */
-li.payment_method_c2c_gateway {
-    border-radius: var(--c2c-radius-md) !important;
-    transition: all 0.2s var(--c2c-ease);
-}
-
-li.payment_method_c2c_gateway label {
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 10px !important;
-    font-weight: 600 !important;
-    font-size: 14.5px !important;
-    cursor: pointer !important;
-}
-
-li.payment_method_c2c_gateway label img {
-    max-height: 26px !important;
-    width: auto !important;
-    vertical-align: middle !important;
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.08)) !important;
-}
-
-div.payment_box.payment_method_c2c_gateway {
-    background: var(--c2c-surface-secondary) !important;
-    border: 1px solid var(--c2c-border) !important;
-    border-radius: var(--c2c-radius-md) !important;
-    padding: 14px 18px !important;
-    margin-top: 10px !important;
-    color: var(--c2c-text-secondary) !important;
-    font-size: 13px !important;
-    line-height: 1.6 !important;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02) !important;
-}
-
-div.payment_box.payment_method_c2c_gateway::before {
-    display: none !important;
+    transform: translateX(-50%) translateY(0);
 }
