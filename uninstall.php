@@ -4,7 +4,7 @@
  *
  * Uninstalling the plugin deletes options, tables, and pages.
  *
- * @package Woo_Card_To_Card_Pro
+ * @package Woo_Card_To_Card
  */
 
 // If uninstall not called from WordPress, then exit.

@@ -2,7 +2,7 @@
 /**
  * Custom Order Status: Awaiting Receipt
  *
- * @package Woo_Card_To_Card_Pro
+ * @package Woo_Card_To_Card
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -19,12 +19,12 @@ class WOO_C2C_Order_Status {
 	 */
 	public static function register_status() {
 		register_post_status( self::STATUS_FULL, array(
-			'label'                     => _x( 'در انتظار بررسی فیش', 'Order status', 'woo-card-to-card-pro' ),
+			'label'                     => _x( 'در انتظار بررسی فیش', 'Order status', 'woo-card-to-card' ),
 			'public'                    => true,
 			'exclude_from_search'       => false,
 			'show_in_admin_all_list'    => true,
 			'show_in_admin_status_list' => true,
-			'label_count'               => _n_noop( 'در انتظار فیش <span class="count">(%s)</span>', 'در انتظار فیش <span class="count">(%s)</span>', 'woo-card-to-card-pro' )
+			'label_count'               => _n_noop( 'در انتظار فیش <span class="count">(%s)</span>', 'در انتظار فیش <span class="count">(%s)</span>', 'woo-card-to-card' )
 		) );
 		
 		// Add email trigger registration for new status
@@ -43,12 +43,12 @@ class WOO_C2C_Order_Status {
 		foreach ( $order_statuses as $key => $status ) {
 			$new_order_statuses[ $key ] = $status;
 			if ( 'wc-on-hold' === $key ) {
-				$new_order_statuses[ self::STATUS_FULL ] = _x( 'در انتظار بررسی فیش', 'Order status', 'woo-card-to-card-pro' );
+				$new_order_statuses[ self::STATUS_FULL ] = _x( 'در انتظار بررسی فیش', 'Order status', 'woo-card-to-card' );
 			}
 		}
 
 		if ( ! isset( $new_order_statuses[ self::STATUS_FULL ] ) ) {
-			$new_order_statuses[ self::STATUS_FULL ] = _x( 'در انتظار بررسی فیش', 'Order status', 'woo-card-to-card-pro' );
+			$new_order_statuses[ self::STATUS_FULL ] = _x( 'در انتظار بررسی فیش', 'Order status', 'woo-card-to-card' );
 		}
 
 		return $new_order_statuses;

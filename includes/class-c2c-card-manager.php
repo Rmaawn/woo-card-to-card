@@ -4,7 +4,7 @@
  *
  * Handles Iranian bank card detection, formatting, and selection logic.
  *
- * @package Woo_Card_To_Card_Pro
+ * @package Woo_Card_To_Card
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

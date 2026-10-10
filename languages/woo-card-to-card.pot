@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Card to Card Payment for WooCommerce 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-card-to-card-pro\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-card-to-card\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -12,56 +12,56 @@ msgstr ""
 "POT-Creation-Date: 2026-09-26T00:00:00+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
-"X-Domain: woo-card-to-card-pro\n"
+"X-Domain: woo-card-to-card\n"
 
-#: woo-card-to-card-pro.php:137
-msgid "پلاگین پرداخت کارت به کارت حرفه‌ای نیاز به نصب و فعال‌سازی ووکامرس دارد."
+#: woo-card-to-card.php:144
+msgid "افزونه woo-card-to-card برای فعالیت نیاز به نصب و فعال‌سازی ووکامرس دارد."
 msgstr ""
 
-#: woo-card-to-card-pro.php:167
+#: woo-card-to-card.php:167
 msgid "کپی شد!"
 msgstr ""
 
-#: woo-card-to-card-pro.php:168
+#: woo-card-to-card.php:168
 msgid "در حال ارسال فیش..."
 msgstr ""
 
-#: woo-card-to-card-pro.php:169
+#: woo-card-to-card.php:169
 msgid "لطفاً تصویر فیش واریزی را انتخاب کنید."
 msgstr ""
 
-#: woo-card-to-card-pro.php:170
+#: woo-card-to-card.php:170
 msgid "فرمت فایل مجاز نیست (فقط JPG, PNG, WEBP)."
 msgstr ""
 
-#: woo-card-to-card-pro.php:171
+#: woo-card-to-card.php:171
 msgid "حجم فایل بیشتر از حد مجاز است."
 msgstr ""
 
-#: woo-card-to-card-pro.php:172
+#: woo-card-to-card.php:172
 msgid "فیش واریزی شما با موفقیت ثبت شد و در صف بررسی قرار گرفت."
 msgstr ""
 
-#: woo-card-to-card-pro.php:173
+#: woo-card-to-card.php:173
 msgid "خطایی در ارسال فیش رخ داد. لطفاً مجدداً تلاش کنید."
 msgstr ""
 
-#: woo-card-to-card-pro.php:217
+#: woo-card-to-card.php:217
 msgid "آیا از تایید این فیش و تغییر وضعیت سفارش به «در حال انجام» مطمئن هستید؟"
 msgstr ""
 
-#: woo-card-to-card-pro.php:218
+#: woo-card-to-card.php:218
 msgid "علت رد فیش را وارد کنید:"
 msgstr ""
 
-#: woo-card-to-card-pro.php:219
+#: woo-card-to-card.php:219
 msgid "فیش واریزی نامعتبر است یا وجه به حساب ننشسته است."
 msgstr ""
 
-#: woo-card-to-card-pro.php:220
+#: woo-card-to-card.php:220
 msgid "در حال پردازش..."
 msgstr ""
 
-#: woo-card-to-card-pro.php:221
+#: woo-card-to-card.php:221
 msgid "عملیات با موفقیت انجام شد."
 msgstr ""

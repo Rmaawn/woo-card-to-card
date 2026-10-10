@@ -1,6 +1,6 @@
-=== Card to Card Payment for WooCommerce ===
+=== woo-card-to-card ===
 Contributors: Rmaawn
-Donate link: https://example.com/donate
+Donate link: https://armanmohebali.ir
 Tags: woocommerce, payment, card-to-card, iran, persian
 Requires at least: 5.8
 Tested up to: 6.7
@@ -9,13 +9,13 @@ Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Card to Card Payment for WooCommerce
+woo-card-to-card
 
 Professional card-to-card (person-to-person) bank transfer payment gateway for WooCommerce with receipt upload, anti-fraud detection, and multi-card management.
 
 == Description ==
 
-Card to Card Payment for WooCommerce is a professional and secure payment gateway designed specifically to handle direct bank transfers and card-to-card payments smoothly. This is especially useful for regions where direct card-to-card payments are the norm, fully supporting Farsi/Persian language and Iranian banking structures.
+Card to Card Payment for WooCommerce (woo-card-to-card) is a professional and secure payment gateway designed specifically to handle direct bank transfers and card-to-card payments smoothly. This is especially useful for regions where direct card-to-card payments are the norm, fully supporting Farsi/Persian language and Iranian banking structures.
 
 ### Key Features
 * **Multiple Card Management**: Add multiple bank accounts and cards for users to transfer money to.
@@ -28,10 +28,10 @@ Card to Card Payment for WooCommerce is a professional and secure payment gatewa
 
 == Installation ==
 
-1. Upload the plugin files to the `/wp-content/plugins/woo-card-to-card-pro` directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the `/wp-content/plugins/woo-card-to-card` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 3. Go to WooCommerce > Settings > Payments.
-4. Enable the "Card to Card (Pro)" gateway and click "Manage" or "Set up".
+4. Enable the "Card to Card" gateway and click "Manage" or "Set up".
 5. Enter your bank card details, account numbers, and any instructional text.
 6. Save changes and you are ready to receive payments!
 

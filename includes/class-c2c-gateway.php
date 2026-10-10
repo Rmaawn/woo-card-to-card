@@ -2,7 +2,7 @@
 /**
  * WooCommerce Card to Card Payment Gateway Class
  *
- * @package Woo_Card_To_Card_Pro
+ * @package Woo_Card_To_Card
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -25,8 +25,8 @@ class WOO_Gateway_C2C extends WC_Payment_Gateway {
 		$this->id                 = WOO_C2C_GATEWAY_ID;
 		$this->icon               = apply_filters( 'woocommerce_c2c_icon', WOO_C2C_PLUGIN_URL . 'assets/images/c2c-icon.svg' );
 		$this->has_fields         = false;
-		$this->method_title       = __( 'کارت به کارت حرفه‌ای (Pro)', 'woo-card-to-card-pro' );
-		$this->method_description = __( 'درگاه پرداخت کارت به کارت با امکان تعریف چند کارت بانکی، آپلود فیش توسط مشتری و تطبیق هوشمند ضد فیش جعلی.', 'woo-card-to-card-pro' );
+		$this->method_title       = __( 'کارت به کارت', 'woo-card-to-card' );
+		$this->method_description = __( 'درگاه پرداخت کارت به کارت با امکان تعریف چند کارت بانکی، آپلود فیش توسط مشتری و تطبیق هوشمند ضد فیش جعلی.', 'woo-card-to-card' );
 		$this->supports           = array( 'products' );
 
 		// Load settings fields
@@ -34,8 +34,8 @@ class WOO_Gateway_C2C extends WC_Payment_Gateway {
 		$this->init_settings();
 
 		// Gateway properties from settings
-		$this->title               = $this->get_option( 'title', __( 'پرداخت کارت به کارت', 'woo-card-to-card-pro' ) );
-		$this->description         = $this->get_option( 'description', __( 'مبلغ سفارش را به یکی از شماره کارت‌های زیر واریز کرده و تصویر فیش را در مرحله بعد ثبت فرمایید.', 'woo-card-to-card-pro' ) );
+		$this->title               = $this->get_option( 'title', __( 'پرداخت کارت به کارت', 'woo-card-to-card' ) );
+		$this->description         = $this->get_option( 'description', __( 'مبلغ سفارش را به یکی از شماره کارت‌های زیر واریز کرده و تصویر فیش را در مرحله بعد ثبت فرمایید.', 'woo-card-to-card' ) );
 		$this->instructions        = $this->get_option( 'instructions' );
 		$this->cards               = WOO_C2C_Card_Manager::parse_cards( $this->get_option( 'cards_config' ) );
 
@@ -53,64 +53,64 @@ class WOO_Gateway_C2C extends WC_Payment_Gateway {
 	public function init_form_fields() {
 		$this->form_fields = array(
 			'enabled' => array(
-				'title'   => __( 'فعال‌سازی درگاه', 'woo-card-to-card-pro' ),
+				'title'   => __( 'فعال‌سازی درگاه', 'woo-card-to-card' ),
 				'type'    => 'checkbox',
-				'label'   => __( 'فعال‌سازی پرداخت کارت به کارت', 'woo-card-to-card-pro' ),
+				'label'   => __( 'فعال‌سازی پرداخت کارت به کارت', 'woo-card-to-card' ),
 				'default' => 'yes',
 			),
 			'title' => array(
-				'title'       => __( 'عنوان درگاه در تسویه حساب', 'woo-card-to-card-pro' ),
+				'title'       => __( 'عنوان درگاه در تسویه حساب', 'woo-card-to-card' ),
 				'type'        => 'text',
-				'description' => __( 'عنوانی که مشتری در صفحه تسویه حساب مشاهده می‌کند.', 'woo-card-to-card-pro' ),
-				'default'     => __( 'کارت به کارت (شتاب)', 'woo-card-to-card-pro' ),
+				'description' => __( 'عنوانی که مشتری در صفحه تسویه حساب مشاهده می‌کند.', 'woo-card-to-card' ),
+				'default'     => __( 'کارت به کارت (شتاب)', 'woo-card-to-card' ),
 				'desc_tip'    => true,
 			),
 			'description' => array(
-				'title'       => __( 'توضیحات درگاه در تسویه حساب', 'woo-card-to-card-pro' ),
+				'title'       => __( 'توضیحات درگاه در تسویه حساب', 'woo-card-to-card' ),
 				'type'        => 'textarea',
-				'description' => __( 'توضیحاتی که پس از انتخاب این درگاه به مشتری نمایش داده می‌شود.', 'woo-card-to-card-pro' ),
-				'default'     => __( 'مبلغ سفارش را کارت به کارت نموده و فیش واریز را بارگذاری نمایید.', 'woo-card-to-card-pro' ),
+				'description' => __( 'توضیحاتی که پس از انتخاب این درگاه به مشتری نمایش داده می‌شود.', 'woo-card-to-card' ),
+				'default'     => __( 'مبلغ سفارش را کارت به کارت نموده و فیش واریز را بارگذاری نمایید.', 'woo-card-to-card' ),
 			),
 			'cards_config' => array(
-				'title'       => __( 'لیست کارت‌های بانکی', 'woo-card-to-card-pro' ),
+				'title'       => __( 'لیست کارت‌های بانکی', 'woo-card-to-card' ),
 				'type'        => 'textarea',
-				'description' => __( 'هر کارت را در یک خط با فرمت روبرو وارد کنید: <br><code>شماره کارت | نام صاحب حساب | نام بانک | شماره شبا</code><br>مثال:<br><code>6037997512345678 | علی محمدی | بانک ملی | IR120170000000012345678901</code>', 'woo-card-to-card-pro' ),
+				'description' => __( 'هر کارت را در یک خط با فرمت روبرو وارد کنید: <br><code>شماره کارت | نام صاحب حساب | نام بانک | شماره شبا</code><br>مثال:<br><code>6037997512345678 | علی محمدی | بانک ملی | IR120170000000012345678901</code>', 'woo-card-to-card' ),
 				'default'     => "6037997512345678 | نام صاحب حساب | بانک ملی ایران | IR120170000000012345678901",
 				'css'         => 'direction: ltr; text-align: left; min-height: 120px;',
 			),
 			'require_tracking' => array(
-				'title'   => __( 'فیلد شماره پیگیری', 'woo-card-to-card-pro' ),
+				'title'   => __( 'فیلد شماره پیگیری', 'woo-card-to-card' ),
 				'type'    => 'checkbox',
-				'label'   => __( 'درج شماره ارجاع / پیگیری توسط مشتری اجباری باشد', 'woo-card-to-card-pro' ),
+				'label'   => __( 'درج شماره ارجاع / پیگیری توسط مشتری اجباری باشد', 'woo-card-to-card' ),
 				'default' => 'yes',
 			),
 			'require_sender_card' => array(
-				'title'   => __( 'فیلد ۴ رقم کارت مبدا', 'woo-card-to-card-pro' ),
+				'title'   => __( 'فیلد ۴ رقم کارت مبدا', 'woo-card-to-card' ),
 				'type'    => 'checkbox',
-				'label'   => __( 'درج ۴ رقم آخر کارت پرداخت‌کننده اجباری باشد', 'woo-card-to-card-pro' ),
+				'label'   => __( 'درج ۴ رقم آخر کارت پرداخت‌کننده اجباری باشد', 'woo-card-to-card' ),
 				'default' => 'no',
 			),
 			'approval_target_status' => array(
-				'title'       => __( 'وضعیت سفارش پس از تایید مدیر', 'woo-card-to-card-pro' ),
+				'title'       => __( 'وضعیت سفارش پس از تایید مدیر', 'woo-card-to-card' ),
 				'type'        => 'select',
-				'description' => __( 'هنگامی که دکمه «تایید واریز» را در سفارش می‌زنید، وضعیت سفارش به این حالت تغییر می‌کند.', 'woo-card-to-card-pro' ),
+				'description' => __( 'هنگامی که دکمه «تایید واریز» را در سفارش می‌زنید، وضعیت سفارش به این حالت تغییر می‌کند.', 'woo-card-to-card' ),
 				'default'     => 'processing',
 				'options'     => array(
-					'processing' => __( 'در حال انجام (Processing)', 'woo-card-to-card-pro' ),
-					'completed'  => __( 'تکمیل شده (Completed)', 'woo-card-to-card-pro' ),
+					'processing' => __( 'در حال انجام (Processing)', 'woo-card-to-card' ),
+					'completed'  => __( 'تکمیل شده (Completed)', 'woo-card-to-card' ),
 				),
 			),
 			'payment_deadline' => array(
-				'title'       => __( 'مهلت پرداخت (دقیقه)', 'woo-card-to-card-pro' ),
+				'title'       => __( 'مهلت پرداخت (دقیقه)', 'woo-card-to-card' ),
 				'type'        => 'number',
-				'description' => __( 'زمان به دقیقه برای لغو خودکار سفارشات در انتظار پرداخت. (مثلاً ۶۰)', 'woo-card-to-card-pro' ),
+				'description' => __( 'زمان به دقیقه برای لغو خودکار سفارشات در انتظار پرداخت. (مثلاً ۶۰)', 'woo-card-to-card' ),
 				'default'     => '60',
 			),
 			'instructions' => array(
-				'title'       => __( 'راهنما و توضیحات فاکتور', 'woo-card-to-card-pro' ),
+				'title'       => __( 'راهنما و توضیحات فاکتور', 'woo-card-to-card' ),
 				'type'        => 'textarea',
-				'description' => __( 'توضیحات و راهنمایی که در صفحه دریافت سفارش (Thank You) نمایش داده می‌شود.', 'woo-card-to-card-pro' ),
-				'default'     => __( 'لطفاً پس از انتقال وجه، حتماً عکس واضح فیش را از فرم زیر ارسال کنید تا سفارش شما تایید و وارد مرحله ارسال شود.', 'woo-card-to-card-pro' ),
+				'description' => __( 'توضیحات و راهنمایی که در صفحه دریافت سفارش (Thank You) نمایش داده می‌شود.', 'woo-card-to-card' ),
+				'default'     => __( 'لطفاً پس از انتقال وجه، حتماً عکس واضح فیش را از فرم زیر ارسال کنید تا سفارش شما تایید و وارد مرحله ارسال شود.', 'woo-card-to-card' ),
 			),
 		);
 	}
@@ -142,7 +142,7 @@ class WOO_Gateway_C2C extends WC_Payment_Gateway {
 		}
 
 		// Set initial status to awaiting receipt
-		$order->update_status( 'wc-awaiting-receipt', __( 'سفارش با روش کارت به کارت ثبت شد؛ در انتظار بارگذاری فیش توسط مشتری.', 'woo-card-to-card-pro' ) );
+		$order->update_status( 'wc-awaiting-receipt', __( 'سفارش با روش کارت به کارت ثبت شد؛ در انتظار بارگذاری فیش توسط مشتری.', 'woo-card-to-card' ) );
 
 		// Reduce stock levels
 		wc_reduce_stock_levels( $order_id );

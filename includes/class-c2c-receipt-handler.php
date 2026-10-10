@@ -4,7 +4,7 @@
  *
  * Handles file uploads, security validation, and duplicate receipt / tracking code detection.
  *
- * @package Woo_Card_To_Card_Pro
+ * @package Woo_Card_To_Card
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -71,7 +71,7 @@ class WOO_C2C_Receipt_Handler {
 		$order_key = isset( $_POST['order_key'] ) ? sanitize_text_field( $_POST['order_key'] ) : '';
 
 		if ( ! $order_id || empty( $order_key ) ) {
-			wp_send_json_error( array( 'message' => __( 'اطلاعات سفارش نامعتبر است.', 'woo-card-to-card-pro' ) ), 400 );
+			wp_send_json_error( array( 'message' => __( 'اطلاعات سفارش نامعتبر است.', 'woo-card-to-card' ) ), 400 );
 		}
 		
 		// Rate limiting per IP
@@ -79,53 +79,53 @@ class WOO_C2C_Receipt_Handler {
 		$transient_key = 'c2c_upload_limit_' . md5( $ip );
 		$attempts = (int) get_transient( $transient_key );
 		if ( $attempts >= 5 ) {
-			wp_send_json_error( array( 'message' => __( 'تعداد درخواست‌های شما بیش از حد مجاز است. لطفاً بعداً تلاش کنید.', 'woo-card-to-card-pro' ) ), 429 );
+			wp_send_json_error( array( 'message' => __( 'تعداد درخواست‌های شما بیش از حد مجاز است. لطفاً بعداً تلاش کنید.', 'woo-card-to-card' ) ), 429 );
 		}
 		set_transient( $transient_key, $attempts + 1, HOUR_IN_SECONDS );
 
 		// Race condition lock
 		$lock_key = 'c2c_upload_lock_' . $order_id;
 		if ( get_transient( $lock_key ) ) {
-			wp_send_json_error( array( 'message' => __( 'درخواست شما در حال پردازش است.', 'woo-card-to-card-pro' ) ), 409 );
+			wp_send_json_error( array( 'message' => __( 'درخواست شما در حال پردازش است.', 'woo-card-to-card' ) ), 409 );
 		}
 		set_transient( $lock_key, 1, 30 );
 
 		$order = wc_get_order( $order_id );
 		if ( ! $order ) {
 			delete_transient( $lock_key );
-			wp_send_json_error( array( 'message' => __( 'سفارش مورد نظر یافت نشد.', 'woo-card-to-card-pro' ) ), 404 );
+			wp_send_json_error( array( 'message' => __( 'سفارش مورد نظر یافت نشد.', 'woo-card-to-card' ) ), 404 );
 		}
 
 		// Verify order key match
 		if ( ! hash_equals( $order->get_order_key(), $order_key ) ) {
 			delete_transient( $lock_key );
-			wp_send_json_error( array( 'message' => __( 'دسترسی غیرمجاز به این سفارش.', 'woo-card-to-card-pro' ) ), 403 );
+			wp_send_json_error( array( 'message' => __( 'دسترسی غیرمجاز به این سفارش.', 'woo-card-to-card' ) ), 403 );
 		}
 		
 		// Ensure current user is owner or it's a guest matching key
 		if ( is_user_logged_in() && $order->get_customer_id() > 0 && $order->get_customer_id() !== get_current_user_id() ) {
 			delete_transient( $lock_key );
-			wp_send_json_error( array( 'message' => __( 'دسترسی غیرمجاز.', 'woo-card-to-card-pro' ) ), 403 );
+			wp_send_json_error( array( 'message' => __( 'دسترسی غیرمجاز.', 'woo-card-to-card' ) ), 403 );
 		}
 
 		// Check if already approved
 		$receipt_status = $order->get_meta( '_c2c_receipt_status' );
 		if ( 'approved' === $receipt_status || in_array( $order->get_status(), array( 'processing', 'completed' ), true ) ) {
 			delete_transient( $lock_key );
-			wp_send_json_error( array( 'message' => __( 'فیش قبلاً تایید شده است.', 'woo-card-to-card-pro' ) ), 400 );
+			wp_send_json_error( array( 'message' => __( 'فیش قبلاً تایید شده است.', 'woo-card-to-card' ) ), 400 );
 		}
 
 		// Check attempts limit
 		$upload_attempts = (int) $order->get_meta( '_c2c_upload_attempts' );
 		if ( $upload_attempts >= self::MAX_UPLOADS ) {
 			delete_transient( $lock_key );
-			wp_send_json_error( array( 'message' => __( 'حداکثر تعداد مجاز برای آپلود فیش به پایان رسیده است.', 'woo-card-to-card-pro' ) ), 400 );
+			wp_send_json_error( array( 'message' => __( 'حداکثر تعداد مجاز برای آپلود فیش به پایان رسیده است.', 'woo-card-to-card' ) ), 400 );
 		}
 
 		// 3. Validate Uploaded File
 		if ( empty( $_FILES['receipt_file'] ) || ! is_uploaded_file( $_FILES['receipt_file']['tmp_name'] ) ) {
 			delete_transient( $lock_key );
-			wp_send_json_error( array( 'message' => __( 'لطفاً تصویر فیش واریزی را بارگذاری نمایید.', 'woo-card-to-card-pro' ) ), 400 );
+			wp_send_json_error( array( 'message' => __( 'لطفاً تصویر فیش واریزی را بارگذاری نمایید.', 'woo-card-to-card' ) ), 400 );
 		}
 
 		$file = $_FILES['receipt_file'];
@@ -133,7 +133,7 @@ class WOO_C2C_Receipt_Handler {
 		// Size check
 		if ( $file['size'] > self::MAX_FILE_SIZE ) {
 			delete_transient( $lock_key );
-			wp_send_json_error( array( 'message' => __( 'حجم تصویر بیش از حد مجاز است (حداکثر ۶ مگابایت).', 'woo-card-to-card-pro' ) ), 400 );
+			wp_send_json_error( array( 'message' => __( 'حجم تصویر بیش از حد مجاز است (حداکثر ۶ مگابایت).', 'woo-card-to-card' ) ), 400 );
 		}
 
 		// Prevent path traversal in filenames
@@ -150,7 +150,7 @@ class WOO_C2C_Receipt_Handler {
 		$file_info = wp_check_filetype_and_ext( $file['tmp_name'], $file_name, $allowed_mimes );
 		if ( ! $file_info['ext'] || ! in_array( $file_info['type'], $allowed_mimes, true ) ) {
 			delete_transient( $lock_key );
-			wp_send_json_error( array( 'message' => __( 'فرمت فایل مجاز نیست. فقط تصاویر JPG, PNG یا WEBP پذیرفته می‌شوند.', 'woo-card-to-card-pro' ) ), 400 );
+			wp_send_json_error( array( 'message' => __( 'فرمت فایل مجاز نیست. فقط تصاویر JPG, PNG یا WEBP پذیرفته می‌شوند.', 'woo-card-to-card' ) ), 400 );
 		}
 
 		// finfo secondary validation
@@ -160,7 +160,7 @@ class WOO_C2C_Receipt_Handler {
 			finfo_close( $finfo );
 			if ( ! in_array( $mime, $allowed_mimes, true ) ) {
 				delete_transient( $lock_key );
-				wp_send_json_error( array( 'message' => __( 'محتوای فایل نامعتبر است.', 'woo-card-to-card-pro' ) ), 400 );
+				wp_send_json_error( array( 'message' => __( 'محتوای فایل نامعتبر است.', 'woo-card-to-card' ) ), 400 );
 			}
 		}
 
@@ -168,7 +168,7 @@ class WOO_C2C_Receipt_Handler {
 		$img_size = @getimagesize( $file['tmp_name'] );
 		if ( $img_size === false ) {
 			delete_transient( $lock_key );
-			wp_send_json_error( array( 'message' => __( 'فایل ارسالی یک تصویر معتبر نیست.', 'woo-card-to-card-pro' ) ), 400 );
+			wp_send_json_error( array( 'message' => __( 'فایل ارسالی یک تصویر معتبر نیست.', 'woo-card-to-card' ) ), 400 );
 		}
 
 		// 4. Calculate File Hash for Anti-Fraud Detection
@@ -183,7 +183,7 @@ class WOO_C2C_Receipt_Handler {
 		
 		if ( ! move_uploaded_file( $file['tmp_name'], $destination_path ) ) {
 			delete_transient( $lock_key );
-			wp_send_json_error( array( 'message' => __( 'ذخیره‌سازی فایل با خطا مواجه شد. لطفاً دوباره تلاش کنید.', 'woo-card-to-card-pro' ) ), 500 );
+			wp_send_json_error( array( 'message' => __( 'ذخیره‌سازی فایل با خطا مواجه شد. لطفاً دوباره تلاش کنید.', 'woo-card-to-card' ) ), 500 );
 		}
 
 		$token_url = home_url( '/c2c-receipt/' . $random_token . '/' );
@@ -223,10 +223,10 @@ class WOO_C2C_Receipt_Handler {
 		}
 
 		// 8. Update Order Status
-		$order->set_status( 'wc-awaiting-receipt', __( 'مشتری فیش واریزی را بارگذاری کرد.', 'woo-card-to-card-pro' ) );
+		$order->set_status( 'wc-awaiting-receipt', __( 'مشتری فیش واریزی را بارگذاری کرد.', 'woo-card-to-card' ) );
 
 		$note_content = sprintf(
-			__( "📄 فیش کارت به کارت ثبت شد:\n• کد پیگیری: %s\n• ۴ رقم آخر کارت: %s\n• تاریخ واریز: %s", 'woo-card-to-card-pro' ),
+			__( "📄 فیش کارت به کارت ثبت شد:\n• کد پیگیری: %s\n• ۴ رقم آخر کارت: %s\n• تاریخ واریز: %s", 'woo-card-to-card' ),
 			! empty( $tracking_code ) ? $tracking_code : '---',
 			! empty( $sender_card ) ? $sender_card : '---',
 			$deposit_date
@@ -251,7 +251,7 @@ class WOO_C2C_Receipt_Handler {
 		delete_transient( $lock_key );
 
 		wp_send_json_success( array(
-			'message'     => __( 'فیش واریزی شما با موفقیت ثبت شد و در صف بررسی مدیر قرار گرفت.', 'woo-card-to-card-pro' ),
+			'message'     => __( 'فیش واریزی شما با موفقیت ثبت شد و در صف بررسی مدیر قرار گرفت.', 'woo-card-to-card' ),
 			'receipt_url' => $token_url,
 			'tracking'    => $tracking_code
 		) );

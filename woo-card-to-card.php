@@ -1,19 +1,19 @@
 <?php
 /**
- * Plugin Name: پرداخت کارت به کارت حرفه‌ای ووکامرس (Pro)
- * Plugin URI: https://github.com/Rmaawn/woo-card-to-card-pro
+ * Plugin Name: woo-card-to-card
+ * Plugin URI: https://github.com/Rmaawn/woo-card-to-card
  * Description: راه‌حل حرفه‌ای و امن پرداخت کارت به کارت برای ووکامرس با قابلیت مدیریت چند کارت، آپلود فیش، سیستم هوشمند ضد تقلب و فیش جعلی، و پنل بررسی سریع ادمین.
  * Version: 1.0.0
- * Author: Rmaawn
- * Author URI: https://github.com/Rmaawn
- * Text Domain: woo-card-to-card-pro
+ * Author: آرمان محبعلی
+ * Author URI: https://armanmohebali.ir
+ * Text Domain: woo-card-to-card
  * Domain Path: /languages
  * Requires at least: 5.8
  * Requires PHP: 7.4
  * WC requires at least: 6.0
  * WC tested up to: 8.9
  *
- * @package Woo_Card_To_Card_Pro
+ * @package Woo_Card_To_Card
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -39,19 +39,19 @@ add_action( 'before_woocommerce_init', function () {
 /**
  * Main Plugin Bootstrap Class
  */
-final class WOO_Card_To_Card_Pro {
+final class WOO_Card_To_Card {
 
 	/**
 	 * Singleton instance
 	 *
-	 * @var WOO_Card_To_Card_Pro|null
+	 * @var WOO_Card_To_Card|null
 	 */
 	private static $instance = null;
 
 	/**
 	 * Get singleton instance
 	 *
-	 * @return WOO_Card_To_Card_Pro
+	 * @return WOO_Card_To_Card
 	 */
 	public static function get_instance() {
 		if ( is_null( self::$instance ) ) {
@@ -141,7 +141,7 @@ final class WOO_Card_To_Card_Pro {
 	public function woocommerce_missing_notice() {
 		?>
 		<div class="error">
-			<p><?php esc_html_e( 'پلاگین پرداخت کارت به کارت حرفه‌ای نیاز به نصب و فعال‌سازی ووکامرس دارد.', 'woo-card-to-card-pro' ); ?></p>
+			<p><?php esc_html_e( 'افزونه woo-card-to-card برای فعالیت نیاز به نصب و فعال‌سازی ووکامرس دارد.', 'woo-card-to-card' ); ?></p>
 		</div>
 		<?php
 	}
@@ -171,13 +171,13 @@ final class WOO_Card_To_Card_Pro {
 				'ajaxUrl'   => admin_url( 'admin-ajax.php' ),
 				'nonce'     => wp_create_nonce( 'woo_c2c_receipt_nonce' ),
 				'i18n'      => array(
-					'copied'            => __( 'کپی شد!', 'woo-card-to-card-pro' ),
-					'uploading'         => __( 'در حال ارسال فیش...', 'woo-card-to-card-pro' ),
-					'selectImage'       => __( 'لطفاً تصویر فیش واریزی را انتخاب کنید.', 'woo-card-to-card-pro' ),
-					'invalidFileType'   => __( 'فرمت فایل مجاز نیست (فقط JPG, PNG, WEBP).', 'woo-card-to-card-pro' ),
-					'fileTooLarge'      => __( 'حجم فایل بیشتر از حد مجاز است.', 'woo-card-to-card-pro' ),
-					'success'           => __( 'فیش واریزی شما با موفقیت ثبت شد و در صف بررسی قرار گرفت.', 'woo-card-to-card-pro' ),
-					'genericError'      => __( 'خطایی در ارسال فیش رخ داد. لطفاً مجدداً تلاش کنید.', 'woo-card-to-card-pro' ),
+					'copied'            => __( 'کپی شد!', 'woo-card-to-card' ),
+					'uploading'         => __( 'در حال ارسال فیش...', 'woo-card-to-card' ),
+					'selectImage'       => __( 'لطفاً تصویر فیش واریزی را انتخاب کنید.', 'woo-card-to-card' ),
+					'invalidFileType'   => __( 'فرمت فایل مجاز نیست (فقط JPG, PNG, WEBP).', 'woo-card-to-card' ),
+					'fileTooLarge'      => __( 'حجم فایل بیشتر از حد مجاز است.', 'woo-card-to-card' ),
+					'success'           => __( 'فیش واریزی شما با موفقیت ثبت شد و در صف بررسی قرار گرفت.', 'woo-card-to-card' ),
+					'genericError'      => __( 'خطایی در ارسال فیش رخ داد. لطفاً مجدداً تلاش کنید.', 'woo-card-to-card' ),
 				)
 			) );
 		}
@@ -222,11 +222,11 @@ final class WOO_Card_To_Card_Pro {
 				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
 				'nonce'   => wp_create_nonce( 'woo_c2c_admin_nonce' ),
 				'i18n'    => array(
-					'confirmApprove'   => __( 'آیا از تایید این فیش و تغییر وضعیت سفارش به «در حال انجام» مطمئن هستید؟', 'woo-card-to-card-pro' ),
-					'confirmReject'    => __( 'علت رد فیش را وارد کنید:', 'woo-card-to-card-pro' ),
-					'defaultRejectMsg' => __( 'فیش واریزی نامعتبر است یا وجه به حساب ننشسته است.', 'woo-card-to-card-pro' ),
-					'processing'       => __( 'در حال پردازش...', 'woo-card-to-card-pro' ),
-					'done'             => __( 'عملیات با موفقیت انجام شد.', 'woo-card-to-card-pro' ),
+					'confirmApprove'   => __( 'آیا از تایید این فیش و تغییر وضعیت سفارش به «در حال انجام» مطمئن هستید؟', 'woo-card-to-card' ),
+					'confirmReject'    => __( 'علت رد فیش را وارد کنید:', 'woo-card-to-card' ),
+					'defaultRejectMsg' => __( 'فیش واریزی نامعتبر است یا وجه به حساب ننشسته است.', 'woo-card-to-card' ),
+					'processing'       => __( 'در حال پردازش...', 'woo-card-to-card' ),
+					'done'             => __( 'عملیات با موفقیت انجام شد.', 'woo-card-to-card' ),
 				)
 			) );
 		}
@@ -250,4 +250,4 @@ register_deactivation_hook( WOO_C2C_PLUGIN_FILE, function () {
 } );
 
 // Bootstrap the plugin.
-WOO_Card_To_Card_Pro::get_instance();
+WOO_Card_To_Card::get_instance();

@@ -2,7 +2,7 @@
 /**
  * Secure Receipt Viewer Endpoint
  *
- * @package Woo_Card_To_Card_Pro
+ * @package Woo_Card_To_Card
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -38,7 +38,7 @@ class WOO_C2C_Receipt_Viewer {
 
 		$token = sanitize_text_field( $wp_query->query_vars['c2c-receipt'] );
 		if ( empty( $token ) ) {
-			wp_die( esc_html__( 'توکن نامعتبر است.', 'woo-card-to-card-pro' ), 403 );
+			wp_die( esc_html__( 'توکن نامعتبر است.', 'woo-card-to-card' ), 403 );
 		}
 
 		// Find order by token
@@ -49,7 +49,7 @@ class WOO_C2C_Receipt_Viewer {
 		) );
 
 		if ( empty( $orders ) ) {
-			wp_die( esc_html__( 'فیش یافت نشد.', 'woo-card-to-card-pro' ), 404 );
+			wp_die( esc_html__( 'فیش یافت نشد.', 'woo-card-to-card' ), 404 );
 		}
 
 		$order = $orders[0];
@@ -58,13 +58,13 @@ class WOO_C2C_Receipt_Viewer {
 			if ( ! is_user_logged_in() || get_current_user_id() !== $order->get_customer_id() ) {
 				// Allow access if token matches and they are on the frontend with correct order key. 
 				// However, standard is they must be logged in as customer or admin.
-				wp_die( esc_html__( 'دسترسی غیرمجاز.', 'woo-card-to-card-pro' ), 403 );
+				wp_die( esc_html__( 'دسترسی غیرمجاز.', 'woo-card-to-card' ), 403 );
 			}
 		}
 
 		$file_path = $order->get_meta( '_c2c_receipt_file_path' );
 		if ( empty( $file_path ) || ! file_exists( $file_path ) ) {
-			wp_die( esc_html__( 'فایل فیش یافت نشد.', 'woo-card-to-card-pro' ), 404 );
+			wp_die( esc_html__( 'فایل فیش یافت نشد.', 'woo-card-to-card' ), 404 );
 		}
 
 		$mime_type = wp_check_filetype( $file_path );

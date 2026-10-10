@@ -2,7 +2,7 @@
 /**
  * Admin Order Meta Box & Verification Actions
  *
- * @package Woo_Card_To_Card_Pro
+ * @package Woo_Card_To_Card
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -47,7 +47,7 @@ class WOO_C2C_Admin {
 		if ( current_user_can( 'manage_woocommerce' ) ) {
 			wp_add_dashboard_widget(
 				'woo_c2c_dashboard_widget',
-				__( 'فیش‌های بررسی نشده (کارت به کارت)', 'woo-card-to-card-pro' ),
+				__( 'فیش‌های بررسی نشده (کارت به کارت)', 'woo-card-to-card' ),
 				array( __CLASS__, 'render_dashboard_widget' )
 			);
 		}
@@ -71,9 +71,9 @@ class WOO_C2C_Admin {
 		}
 		
 		echo '<div style="display:flex; justify-content:space-between; align-items:center;">';
-		echo '<p>' . sprintf( __( 'تعداد %d سفارش در انتظار بررسی فیش هستند.', 'woo-card-to-card-pro' ), $count ) . '</p>';
+		echo '<p>' . sprintf( __( 'تعداد %d سفارش در انتظار بررسی فیش هستند.', 'woo-card-to-card' ), $count ) . '</p>';
 		if ( $count > 0 ) {
-			echo '<a class="button button-primary" href="' . esc_url( $url ) . '">' . esc_html__( 'بررسی فیش‌ها', 'woo-card-to-card-pro' ) . '</a>';
+			echo '<a class="button button-primary" href="' . esc_url( $url ) . '">' . esc_html__( 'بررسی فیش‌ها', 'woo-card-to-card' ) . '</a>';
 		}
 		echo '</div>';
 	}
@@ -82,7 +82,7 @@ class WOO_C2C_Admin {
 	 * Register bulk actions
 	 */
 	public static function register_bulk_actions( $bulk_actions ) {
-		$bulk_actions['c2c_approve'] = __( 'تایید گروهی فیش‌ها', 'woo-card-to-card-pro' );
+		$bulk_actions['c2c_approve'] = __( 'تایید گروهی فیش‌ها', 'woo-card-to-card' );
 		return $bulk_actions;
 	}
 
@@ -114,7 +114,7 @@ class WOO_C2C_Admin {
 
 			if ( $order->get_payment_method() === WOO_C2C_GATEWAY_ID ) {
 				$order->update_meta_data( '_c2c_receipt_status', 'approved' );
-				$order->set_status( $target_status, __( 'فیش کارت‌به‌کارت به صورت گروهی تایید شد.', 'woo-card-to-card-pro' ) );
+				$order->set_status( $target_status, __( 'فیش کارت‌به‌کارت به صورت گروهی تایید شد.', 'woo-card-to-card' ) );
 				$order->save();
 				$approved++;
 			}
@@ -134,7 +134,7 @@ class WOO_C2C_Admin {
 
 		add_meta_box(
 			'woo_c2c_receipt_meta_box',
-			__( '💳 بررسی فیش کارت به کارت', 'woo-card-to-card-pro' ),
+			__( '💳 بررسی فیش کارت به کارت', 'woo-card-to-card' ),
 			array( __CLASS__, 'render_meta_box_content' ),
 			$screen,
 			'side',
@@ -153,7 +153,7 @@ class WOO_C2C_Admin {
 			: wc_get_order( $post_or_order_object->ID );
 
 		if ( ! $order ) {
-			echo '<p>' . esc_html__( 'سفارش نامعتبر است.', 'woo-card-to-card-pro' ) . '</p>';
+			echo '<p>' . esc_html__( 'سفارش نامعتبر است.', 'woo-card-to-card' ) . '</p>';
 			return;
 		}
 
@@ -162,7 +162,7 @@ class WOO_C2C_Admin {
 		$receipt_url    = $order->get_meta( '_c2c_receipt_file_url' );
 
 		if ( $payment_method !== WOO_C2C_GATEWAY_ID && empty( $receipt_url ) ) {
-			echo '<p style="color:#666;font-size:13px;">' . esc_html__( 'روش پرداخت این سفارش کارت به کارت نیست.', 'woo-card-to-card-pro' ) . '</p>';
+			echo '<p style="color:#666;font-size:13px;">' . esc_html__( 'روش پرداخت این سفارش کارت به کارت نیست.', 'woo-card-to-card' ) . '</p>';
 			return;
 		}
 
@@ -194,11 +194,11 @@ class WOO_C2C_Admin {
 		foreach ( $columns as $key => $column ) {
 			$new_columns[ $key ] = $column;
 			if ( 'order_status' === $key ) {
-				$new_columns['c2c_receipt_status'] = __( 'فیش کارت‌به‌کارت', 'woo-card-to-card-pro' );
+				$new_columns['c2c_receipt_status'] = __( 'فیش کارت‌به‌کارت', 'woo-card-to-card' );
 			}
 		}
 		if ( ! isset( $new_columns['c2c_receipt_status'] ) ) {
-			$new_columns['c2c_receipt_status'] = __( 'فیش کارت‌به‌کارت', 'woo-card-to-card-pro' );
+			$new_columns['c2c_receipt_status'] = __( 'فیش کارت‌به‌کارت', 'woo-card-to-card' );
 		}
 		return $new_columns;
 	}
@@ -250,7 +250,7 @@ class WOO_C2C_Admin {
 
 		// Check if there are fraud warnings
 		if ( ! empty( $duplicate_hashes ) || ! empty( $duplicate_tracks ) ) {
-			echo '<span class="c2c-badge c2c-badge-warning" title="' . esc_attr__( 'هشدار: تطابق رسید یا کد پیگیری با سفارش دیگر!', 'woo-card-to-card-pro' ) . '">⚠️ مشکوک به تکرار</span>';
+			echo '<span class="c2c-badge c2c-badge-warning" title="' . esc_attr__( 'هشدار: تطابق رسید یا کد پیگیری با سفارش دیگر!', 'woo-card-to-card' ) . '">⚠️ مشکوک به تکرار</span>';
 			return;
 		}
 
@@ -274,19 +274,19 @@ class WOO_C2C_Admin {
 		check_ajax_referer( 'woo_c2c_admin_nonce', 'nonce' );
 
 		if ( ! current_user_can( 'manage_woocommerce' ) ) {
-			wp_send_json_error( array( 'message' => __( 'دسترسی غیرمجاز.', 'woo-card-to-card-pro' ) ), 403 );
+			wp_send_json_error( array( 'message' => __( 'دسترسی غیرمجاز.', 'woo-card-to-card' ) ), 403 );
 		}
 
 		$order_id = isset( $_POST['order_id'] ) ? absint( $_POST['order_id'] ) : 0;
 		$order = wc_get_order( $order_id );
 
 		if ( ! $order ) {
-			wp_send_json_error( array( 'message' => __( 'سفارش یافت نشد.', 'woo-card-to-card-pro' ) ), 404 );
+			wp_send_json_error( array( 'message' => __( 'سفارش یافت نشد.', 'woo-card-to-card' ) ), 404 );
 		}
 		
 		$status = $order->get_meta( '_c2c_receipt_status' );
 		if ( 'approved' === $status || in_array( $order->get_status(), array( 'processing', 'completed' ), true ) ) {
-			wp_send_json_error( array( 'message' => __( 'این فیش یا سفارش قبلاً تایید شده است.', 'woo-card-to-card-pro' ) ), 400 );
+			wp_send_json_error( array( 'message' => __( 'این فیش یا سفارش قبلاً تایید شده است.', 'woo-card-to-card' ) ), 400 );
 		}
 
 		// Get target status from gateway options (defaults to processing)
@@ -297,11 +297,11 @@ class WOO_C2C_Admin {
 		}
 
 		$order->update_meta_data( '_c2c_receipt_status', 'approved' );
-		$order->set_status( $target_status, __( 'فیش کارت‌به‌کارت توسط مدیر تایید شد و وجه دریافت گردید.', 'woo-card-to-card-pro' ) );
-		$order->add_order_note( sprintf( __( 'مدیر (%s) فیش واریزی را تایید کرد.', 'woo-card-to-card-pro' ), wp_get_current_user()->display_name ), false, true );
+		$order->set_status( $target_status, __( 'فیش کارت‌به‌کارت توسط مدیر تایید شد و وجه دریافت گردید.', 'woo-card-to-card' ) );
+		$order->add_order_note( sprintf( __( 'مدیر (%s) فیش واریزی را تایید کرد.', 'woo-card-to-card' ), wp_get_current_user()->display_name ), false, true );
 		$order->save();
 
-		wp_send_json_success( array( 'message' => __( 'فیش با موفقیت تایید و وضعیت سفارش تغییر کرد.', 'woo-card-to-card-pro' ) ) );
+		wp_send_json_success( array( 'message' => __( 'فیش با موفقیت تایید و وضعیت سفارش تغییر کرد.', 'woo-card-to-card' ) ) );
 	}
 
 	/**
@@ -311,30 +311,30 @@ class WOO_C2C_Admin {
 		check_ajax_referer( 'woo_c2c_admin_nonce', 'nonce' );
 
 		if ( ! current_user_can( 'manage_woocommerce' ) ) {
-			wp_send_json_error( array( 'message' => __( 'دسترسی غیرمجاز.', 'woo-card-to-card-pro' ) ), 403 );
+			wp_send_json_error( array( 'message' => __( 'دسترسی غیرمجاز.', 'woo-card-to-card' ) ), 403 );
 		}
 
 		$order_id = isset( $_POST['order_id'] ) ? absint( $_POST['order_id'] ) : 0;
-		$reason   = isset( $_POST['reason'] ) ? sanitize_text_field( $_POST['reason'] ) : __( 'فیش نامعتبر است', 'woo-card-to-card-pro' );
+		$reason   = isset( $_POST['reason'] ) ? sanitize_text_field( $_POST['reason'] ) : __( 'فیش نامعتبر است', 'woo-card-to-card' );
 
 		$order = wc_get_order( $order_id );
 		if ( ! $order ) {
-			wp_send_json_error( array( 'message' => __( 'سفارش یافت نشد.', 'woo-card-to-card-pro' ) ), 404 );
+			wp_send_json_error( array( 'message' => __( 'سفارش یافت نشد.', 'woo-card-to-card' ) ), 404 );
 		}
 		
 		$status = $order->get_meta( '_c2c_receipt_status' );
 		if ( 'approved' === $status || in_array( $order->get_status(), array( 'processing', 'completed' ), true ) ) {
-			wp_send_json_error( array( 'message' => __( 'این فیش یا سفارش قبلاً تایید شده و امکان رد آن وجود ندارد.', 'woo-card-to-card-pro' ) ), 400 );
+			wp_send_json_error( array( 'message' => __( 'این فیش یا سفارش قبلاً تایید شده و امکان رد آن وجود ندارد.', 'woo-card-to-card' ) ), 400 );
 		}
 
 		$order->update_meta_data( '_c2c_receipt_status', 'rejected' );
 		$order->update_meta_data( '_c2c_rejection_reason', $reason );
-		$order->set_status( 'on-hold', sprintf( __( 'فیش کارت‌به‌کارت توسط مدیر رد شد. علت: %s', 'woo-card-to-card-pro' ), $reason ) );
+		$order->set_status( 'on-hold', sprintf( __( 'فیش کارت‌به‌کارت توسط مدیر رد شد. علت: %s', 'woo-card-to-card' ), $reason ) );
 		
-		$customer_note = sprintf( __( 'فیش واریزی کارت‌به‌کارت شما رد شد. علت: %s. لطفاً با پشتیبانی در تماس باشید.', 'woo-card-to-card-pro' ), $reason );
+		$customer_note = sprintf( __( 'فیش واریزی کارت‌به‌کارت شما رد شد. علت: %s. لطفاً با پشتیبانی در تماس باشید.', 'woo-card-to-card' ), $reason );
 		$order->add_order_note( $customer_note, true, true );
 		$order->save();
 
-		wp_send_json_success( array( 'message' => __( 'فیش رد شد و یادداشت به مشتری اطلاع داده شد.', 'woo-card-to-card-pro' ) ) );
+		wp_send_json_success( array( 'message' => __( 'فیش رد شد و یادداشت به مشتری اطلاع داده شد.', 'woo-card-to-card' ) ) );
 	}
 }

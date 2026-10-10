@@ -3,7 +3,7 @@
  * Thank You / Order View Receipt Form & Card Display Template
  * Designed with Apple Human Interface Guidelines & Realistic Tactile Elements
  *
- * @package Woo_Card_To_Card_Pro
+ * @package Woo_Card_To_Card
  */
 
 if (!defined('ABSPATH')) {

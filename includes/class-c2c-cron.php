@@ -2,7 +2,7 @@
 /**
  * Cron Job Handler
  *
- * @package Woo_Card_To_Card_Pro
+ * @package Woo_Card_To_Card
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -55,7 +55,7 @@ class WOO_C2C_Cron {
 
 		foreach ( $orders as $order ) {
 			if ( 'approved' !== $order->get_meta( '_c2c_receipt_status' ) ) {
-				$order->update_status( 'cancelled', __( 'سفارش به دلیل عدم پرداخت در زمان مقرر لغو شد.', 'woo-card-to-card-pro' ) );
+				$order->update_status( 'cancelled', __( 'سفارش به دلیل عدم پرداخت در زمان مقرر لغو شد.', 'woo-card-to-card' ) );
 			}
 		}
 	}
