@@ -1,0 +1,10 @@
+# Exclude development files from production archive
+.gitattributes export-ignore
+.gitignore export-ignore
+.distignore export-ignore
+README.md export-ignore
+.DS_Store export-ignore
+Thumbs.db export-ignore
+.idea export-ignore
+.vscode export-ignore
+assets/images/screenshots export-ignore
